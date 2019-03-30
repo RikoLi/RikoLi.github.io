@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>AI整理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2018-2019春夏学期人工智能课程内容整理。不定期更新。">
+<meta name="keywords" content="人工智能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI整理">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/AI整理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2018-2019春夏学期人工智能课程内容整理。不定期更新。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-20T16:27:59.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI整理">
+<meta name="twitter:description" content="2018-2019春夏学期人工智能课程内容整理。不定期更新。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-AI整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/09/AI整理/" class="article-date">
+  <time datetime="2019-03-09T08:42:29.000Z" itemprop="datePublished">2019-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AI整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2018-2019春夏学期人工智能课程内容整理。不定期更新。</p>
+<a id="more"></a>
+<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h2 id="一般搜索"><a href="#一般搜索" class="headerlink" title="一般搜索"></a>一般搜索</h2><h3 id="Uninformed-search：无信息搜索"><a href="#Uninformed-search：无信息搜索" class="headerlink" title="Uninformed search：无信息搜索"></a>Uninformed search：无信息搜索</h3><p>盲目搜索，等同于蛮力搜索，常用方法：</p>
+<ul>
+<li>DFS</li>
+<li>BFS</li>
+<li>IDS<br>迭代加深搜索，DFS的改进版，过程分为多个iteration，每个iteration内进行深度限制为n的DFS，n从0开始每次迭代增加1，直至搜索结束。</li>
+<li>UCS<br>Uniform-cost search，BFS的改进版，使用优先队列实现。扩充cost最小的节点，其中cost为从起点到某节点边上权重之和。算法结束得到连接至目标节点的最短路径。边权重相同时退化为BFS。</li>
+</ul>
+<h3 id="Informed-search：有信息搜索"><a href="#Informed-search：有信息搜索" class="headerlink" title="Informed search：有信息搜索"></a>Informed search：有信息搜索</h3><p>通过某种方式得到关于某节点至目标节点的“距离”信息，根据信息设计的搜索。称为启发式搜索。</p>
+<p>关键在设计启发式函数$h(n)$，要求：</p>
+<ol>
+<li>$h(n)\ge0$</li>
+<li>满足广义三角不等式：$h(n) \le cost(n,n+1) + h(n+1)$</li>
+</ol>
+<p>常用方法：</p>
+<ul>
+<li><p>GBFS<br>Greedy best-first search，根据启发式函数选择搜索路径，$h(n)$表示第n节点距目标节点距离，每次选择$h(n)$最小的节点作为下个节点。</p>
+</li>
+<li><p>A* search<br>同时考虑cost和heuristic function，判断依据：$f(n)=g(n)+h(n)$，g为cost，h为距目标距离。选择$f(n)$最小的节点作为下个节点。</p>
+</li>
+</ul>
+<hr>
+<p><strong>3.13</strong></p>
+<h2 id="Adversarial-Search：对抗搜索"><a href="#Adversarial-Search：对抗搜索" class="headerlink" title="Adversarial Search：对抗搜索"></a>Adversarial Search：对抗搜索</h2><p>本课程只讨论如下特征的对抗搜索：</p>
+<ul>
+<li>zero-sum游戏：一局游戏后，双方受益损失总和为零，即一定一方受益，另一方损失</li>
+<li>确定状态游戏：每个状态下关于这个状态的全部信息已知</li>
+</ul>
+<h3 id="Game-Tree：博弈树-游戏树"><a href="#Game-Tree：博弈树-游戏树" class="headerlink" title="Game Tree：博弈树/游戏树"></a>Game Tree：博弈树/游戏树</h3><p>博弈树是一种基本对抗搜索状态空间结构，以下搜索算法均已博弈树为基础。</p>
+<p>博弈树结构如下：</p>
+<ul>
+<li>每个节点：博弈/游戏过程的某个状态</li>
+<li>边：表示两个游戏状态的连续关系</li>
+</ul>
+<h3 id="Minimax-Search：最小最大化搜索"><a href="#Minimax-Search：最小最大化搜索" class="headerlink" title="Minimax Search：最小最大化搜索"></a>Minimax Search：最小最大化搜索</h3><p>minimax search假设对抗双方都做出最佳选择，一方使目标函数尽可能大，另一方使其尽可能小。</p>
+<p>特点：</p>
+<ul>
+<li>为博弈树每个节点计算minimax value</li>
+<li>MAX方，MIN方轮流决策</li>
+<li>深度访问，递归访问</li>
+<li>需要最终状态的目标函数值</li>
+</ul>
+<p>理想情况下，博弈树完全，从根节点按照MAX、MIN双方轮流的顺序进行决策，每次决策递归地确定当前节点的minimax value，最后将整棵博弈树节点全部填满。</p>
+<p>minimax search为博弈树节点规定了如下属性：</p>
+<ul>
+<li>minimax value</li>
+</ul>
+<p><strong>H-Minimax Search</strong>：现实情况下，完全博弈树过大，遍历不现实，采用depth-limited的方式：限制最深的访问深度，将最深层的节点视为最终的叶节点。使用heuristic策略为这些叶节点估计minimax value，然后同理想情况下一样进行搜索。</p>
+<p><strong>alpha-beta剪枝</strong>：用于减小博弈树规模。这种策略为节点规定了如下属性：</p>
+<ul>
+<li>minimax value</li>
+<li>alpha、beta作为参考边界：[alpha, beta]</li>
+</ul>
+<p>alpha、beta初始化为负、正无穷，每次搜索一个节点的子节点后，根据子节点minimax value大小&amp;当前节点角色（MAX或MIN），确定当前节点的一个边界，并回溯至整棵树的根节点，途中所有经过节点的边界都进行更新。</p>
+<p>边界描述了当前节点minimax value的取值范围，根据边界可以避免访问一些子树，即剪枝。</p>
+<h3 id="Monte-Carlo-Tree-Search：蒙特卡洛树搜索"><a href="#Monte-Carlo-Tree-Search：蒙特卡洛树搜索" class="headerlink" title="Monte Carlo Tree Search：蒙特卡洛树搜索"></a>Monte Carlo Tree Search：蒙特卡洛树搜索</h3><p>基本思想：基于多次实验的统计情况，构建一棵博弈树的子树，其中节点为实验中访问到的节点。根据每个节点的访问次数和对应游戏结果计算选择该点为下一个状态的概率，选择概率大的为下个状态。</p>
+<p>每个节点属性：</p>
+<ul>
+<li>实验中由此节点开始最终游戏胜利的次数</li>
+<li>实验中此节点总到达次数</li>
+</ul>
+<p>MCTS过程如下，反复执行：</p>
+<ol>
+<li>selection：从根节点（当前状态节点）随机进行决策（rollout），确定一条结束于当前叶节点的路径</li>
+<li>expansion：从当前叶节点进行一次rollout，到达次态，初始化次态属性0/0</li>
+<li>simulation：从expansion扩充出来的节点进行rollout，直至游戏结束状态</li>
+<li>backpropagation：从simulation得到的最终状态按照simulation的路径回溯更新路径上全部节点的属性，直至根节点</li>
+</ol>
+<hr>
+<p><strong>3.20</strong></p>
+<h2 id="Constraint-Satisfaction-Problems-约束满足问题"><a href="#Constraint-Satisfaction-Problems-约束满足问题" class="headerlink" title="Constraint Satisfaction Problems 约束满足问题"></a>Constraint Satisfaction Problems 约束满足问题</h2><p>CSP有如下特征：</p>
+<ul>
+<li>variable set：一些可赋值变量构成的集合</li>
+<li>domain set：变量取值构成的集合</li>
+<li>constraint set：约束条件构成的集合</li>
+</ul>
+<p>CSP更重视满足约束问题的一个解，更重视结果而非过程。</p>
+<h3 id="Constraint-Graph：约束图"><a href="#Constraint-Graph：约束图" class="headerlink" title="Constraint Graph：约束图"></a>Constraint Graph：约束图</h3><p>一种描述约束问题的结构：</p>
+<ul>
+<li>node: 问题的变量</li>
+<li>edge: 变量的相关（节点之间连接一条边表示两个节点表示的变量存在相互约束关系）</li>
+</ul>
+<p><strong>延伸：Hyper Graph 超图</strong><br>超图中引入超边（Hyper Edge），连接多个节点，表示多个变量之间存在约束关系。超图可以通过化简成为普通的约束图。</p>
+<h3 id="Backtracking-回溯法"><a href="#Backtracking-回溯法" class="headerlink" title="Backtracking 回溯法"></a>Backtracking 回溯法</h3><p>经典的解决CSP的算法，结合树使用递归实现。一种改进的DFS，有两点改进：</p>
+<ul>
+<li>固定<ul>
+<li>一次给一个节点的变量赋值</li>
+<li>赋值按照固定顺序</li>
+</ul>
+</li>
+<li>检查约束</li>
+</ul>
+<p>问题：</p>
+<ul>
+<li>先给哪个节点变量赋值？which variable?</li>
+<li>给变量赋哪个值？which value in domain?</li>
+</ul>
+<p>解决策略：解决策略均从能够使搜索树尽可能小的思想出发</p>
+<ul>
+<li>which variable? 两种策略<ul>
+<li>给自由度最大的节点变量赋值（Degree heuristic）</li>
+<li>给取值可能最少的节点变量赋值（Minimum-remaining-value, MRV）</li>
+</ul>
+</li>
+<li>which value?<ul>
+<li>选择使未来有更多种可能的值进行赋值（Least-constraining-value heuristic）</li>
+<li>domain能否动态缩小？→ <strong>Inference的讨论</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>Inference：推理</strong><br>推理用来动态减小domain的大小，从而减小可能的搜索空间。</p>
+<p>两个要素：</p>
+<ul>
+<li>Forward Checking：进行一个变量赋值后，确定与其构成约束关系的下个节点（子节点）变量的值域，去掉illegal的可能性，只向下进行一步（local consistency）</li>
+<li>Arc Consistency：to be continued…</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/09/AI整理/" data-id="cjtvp69j2000148duzgu9o81f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/19/一些回忆的事/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一些回忆的事
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GAN demo: ACG-Style Faces Generating</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GAN/">GAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人工智能/">人工智能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支持向量机/">支持向量机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/矩阵/">矩阵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GAN/" style="font-size: 10px;">GAN</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/机器学习/" style="font-size: 13.33px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/30/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/hello-world/">Tutorial</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/26/GraphSAGE：Node Embedding初探&复现的一些想法/">GraphSAGE：Node Embedding初探&amp;复现的一些想法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/24/2019.3.23水水亚巡场记/">2019.3.23水水亚巡场记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/一些回忆的事/">一些回忆的事</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

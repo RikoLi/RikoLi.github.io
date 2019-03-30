@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>关于矩阵几何意义的理解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学工程的人都在用矩阵，但是很多时候在学校学的东西十分僵硬，让人接受起来很困难，导致想熟练掌握矩阵代数要耗费大量时间，换句话说就是“学了很多，但是还是很费解”，因为矩阵代数直观上似乎不是那么“一眼就懂”（主要是我太菜，数学大师们当我没说2333）。 那么我们或许要考虑一下矩阵代数的集合含义，在对一些内容的理解上应该会有所帮助，至少不会觉得一些东西很“绕”，也更容易让人记住+理解。 本文就整理一下个人">
+<meta name="keywords" content="矩阵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于矩阵几何意义的理解">
+<meta property="og:url" content="http://yoursite.com/2018/10/14/关于矩阵几何意义的理解/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学工程的人都在用矩阵，但是很多时候在学校学的东西十分僵硬，让人接受起来很困难，导致想熟练掌握矩阵代数要耗费大量时间，换句话说就是“学了很多，但是还是很费解”，因为矩阵代数直观上似乎不是那么“一眼就懂”（主要是我太菜，数学大师们当我没说2333）。 那么我们或许要考虑一下矩阵代数的集合含义，在对一些内容的理解上应该会有所帮助，至少不会觉得一些东西很“绕”，也更容易让人记住+理解。 本文就整理一下个人">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-27T03:25:56.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于矩阵几何意义的理解">
+<meta name="twitter:description" content="学工程的人都在用矩阵，但是很多时候在学校学的东西十分僵硬，让人接受起来很困难，导致想熟练掌握矩阵代数要耗费大量时间，换句话说就是“学了很多，但是还是很费解”，因为矩阵代数直观上似乎不是那么“一眼就懂”（主要是我太菜，数学大师们当我没说2333）。 那么我们或许要考虑一下矩阵代数的集合含义，在对一些内容的理解上应该会有所帮助，至少不会觉得一些东西很“绕”，也更容易让人记住+理解。 本文就整理一下个人">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-关于矩阵几何意义的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/14/关于矩阵几何意义的理解/" class="article-date">
+  <time datetime="2018-10-14T14:50:51.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于矩阵几何意义的理解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学工程的人都在用矩阵，但是很多时候在学校学的东西十分僵硬，让人接受起来很困难，导致想熟练掌握矩阵代数要耗费大量时间，换句话说就是“学了很多，但是还是很费解”，因为矩阵代数直观上似乎不是那么“一眼就懂”（主要是我太菜，数学大师们当我没说2333）。</p>
+<p>那么我们或许要考虑一下矩阵代数的集合含义，在对一些内容的理解上应该会有所帮助，至少不会觉得一些东西很“绕”，也更容易让人记住+理解。</p>
+<p>本文就整理一下个人理解的矩阵的“意义”吧，感谢网络让我找到不少资料，记录会比较零碎，主要是根据课堂所学内容同步进行，有哪里不太好理解就记下来，均是个人理解。</p>
+<a id="more"></a>
+<h1 id="从向量开始"><a href="#从向量开始" class="headerlink" title="从向量开始"></a>从向量开始</h1><p>为什么从向量说起呢？就像标量一个数（1,2j,-3,5.81,-3.121等等所有复数）是标量体系下的基石一样，向量是矩阵运算体系的基石，它是矩阵代数运算（在矩阵代数中应该叫线性变换？）的基本运算单元，事实上向量是标量的扩充，更一般化，而标量只是特殊的向量而已。</p>
+<h2 id="向量表示什么？"><a href="#向量表示什么？" class="headerlink" title="向量表示什么？"></a>向量表示什么？</h2><p>向量是一组数，这组数的个数称<strong>维度</strong>。比如一个m维向量：</p>
+<p>$$\bold{a} = [a_1, a_2, …, a_m]$$</p>
+<p>我们可以认为它是在m维空间中的一个“实例”，是一个独一无二的个体。</p>
+<p>向量可以用来表示许多物理存在。举个例子来类比吧，Riko是一个根据某种方式定义的空间下存在的人，那么Riko可以看做这个空间下的一个向量：<br>$$<br>Riko = [身高，体重，性别，年龄，职业，…]<br>$$</p>
+<p>向量Riko的维度很高，很可能是无穷维的。这个向量描述了Riko这个人在空间下的全部属性。</p>
+<h2 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h2><p>刚开始学的时候我对范数的理解仅仅是去类比Euclidean范数（对，就是那个元素平方和开方，二范数），后来才知道所有范数应该有着更广义的含义。</p>
+<p>向量范数是对向量在其存在空间内对其“尺度”或者“大小”（广义上的）一种衡量手段，有着不同的定义方式，是一种存在尺度的描述。</p>
+<h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><p>开始我们的重点，矩阵是什么？怎么直观去理解？</p>
+<p>矩阵的书面样子很简洁，m行n列的一组数：</p>
+<p>$$<br>\bold{A} = \begin{bmatrix}<br>a_{11} &amp; \cdots &amp; a_{1n} \<br>\vdots &amp; \ddots &amp; \vdots \<br>a_{m1} &amp; \cdots &amp; a_{mn}<br>\end{bmatrix}<br>$$</p>
+<p>单独一个矩阵几何意义是一种空间上的变换，将他看成一个算子[^1]，表示着一种扭曲原空间的“操作”。<br>[^1]:用算子这个词在数学上可能不够严谨，但这里方便自己理解就说成这样了。</p>
+<h2 id="矩阵与向量乘法"><a href="#矩阵与向量乘法" class="headerlink" title="矩阵与向量乘法"></a>矩阵与向量乘法</h2><p>联系矩阵和向量乘法规则，我们可以这样理解矩阵作为因子的作用：</p>
+<ul>
+<li>对原始向量进行了m维空间→n维（或者反过来）空间的升维/降维映射</li>
+<li>一定把m维向量映射到n维或者把n维映射到m维，总之是把向量在两个维度空间之间变换</li>
+</ul>
+<p>比如：</p>
+<p>$$\bold{a}<em>{1\times m} \times \bold{A}</em>{m\times n} = \bold{b}_{1\times n}$$</p>
+<p>就是把原来的m维空间中的向量<strong>a</strong>映射到了n维空间中，起了个新名字叫<strong>b</strong>。</p>
+<h2 id="矩阵与矩阵乘法"><a href="#矩阵与矩阵乘法" class="headerlink" title="矩阵与矩阵乘法"></a>矩阵与矩阵乘法</h2><p>矩阵乘法视为许多种空间变换的连续作用，如：</p>
+<p>$$<br>\bold{C} = \bold{A}\bold{B}<br>$$</p>
+<p>矩阵<strong>C</strong>表示一种变换，这种变换为依次进行变换<strong>A</strong>和<strong>B</strong>的等效变换。</p>
+<p>我们知道矩阵乘法中左乘和右乘是不同的，而且行、列数必须协调。其实很好理解，如：存在一个矩阵表示从m维到n维变换，每次变换的起始空间必须是m维或者n维空间，因为矩阵描述的就是这两个维度之间的变换方式，不可能直接对m维空间进行一个p维（p≠m）到n维的变换，因此矩阵乘法一定要协调。</p>
+<p>至于左右乘，可以理解为进行变换的顺序不一样，其等价变换涉及的空间变换关系也不同。</p>
+<h2 id="一些矩阵运算的理解"><a href="#一些矩阵运算的理解" class="headerlink" title="一些矩阵运算的理解"></a>一些矩阵运算的理解</h2><h3 id="逆矩阵与伪逆矩阵"><a href="#逆矩阵与伪逆矩阵" class="headerlink" title="逆矩阵与伪逆矩阵"></a>逆矩阵与伪逆矩阵</h3><p>矩阵的可逆性可以理解为线性变换的可逆性。若方阵<strong>A</strong>可逆，表示<strong>A</strong>这个m维→m维的变换具有可逆性，我可以将m维空间里的向量经过<strong>A</strong>变换成m维空间的另一个向量，这新向量可以通过逆变换$\bold{A}^{-1}$再变换回原来的向量。</p>
+<p>如果矩阵不再是方阵呢？我们要是表示m维与n维空间变换关系的可逆性与否呢？这时候引入了伪逆的概念。</p>
+<p>伪逆描述了不同维数空间之间线性变换的可逆性。</p>
+<h3 id="特征值与特征向量"><a href="#特征值与特征向量" class="headerlink" title="特征值与特征向量"></a>特征值与特征向量</h3><p>当时学了特征分解之后，虽然知道如何求解特征值和特征向量，但是对它们的意义还是一头雾水。</p>
+<p>实际上特征分解在做这样一件事：</p>
+<ul>
+<li>将原先用一个矩阵描述的线性变换<strong>A</strong>分解为基础的变换叠加</li>
+</ul>
+<p>特征分解定义是这样：</p>
+<p>$$<br>\bold{A} = \bold{U}\bold{\Sigma}\bold{U}^H<br>$$</p>
+<p>酉矩阵<strong>U</strong>描述了变换发生的维度，特征值矩阵$\bold{\Sigma}$描述了每个维度上变换的“强度”或“倍数”，其对角线上元素从上到下是特征值的降序排列。</p>
+<p>通过特征值分解可以明确看出一个线性变换的主要变换发生在哪个维度上（根据特征向量判断），以及变换的强度如何（根据特征值大小判断）。</p>
+<p>从特征值和特征向量的定义看：</p>
+<p>$$<br>\bold{A}\bold{x} = \lambda\bold{x}<br>$$</p>
+<p>对特征向量进行线性变换只进行在特征向量方向上的伸缩变换，没有其他变换。也就是说，满足这种性质的向量就是一个变换的特征向量，对应伸缩变换的因子就是特征值。</p>
+<h3 id="SVD与奇异值"><a href="#SVD与奇异值" class="headerlink" title="SVD与奇异值"></a>SVD与奇异值</h3><p>SVD即奇异值分解，起到和特征分解类似的作用，也是将一个线性变换分解成基础的变换叠加。</p>
+<p>SVD是对一般矩阵而言的，不要求一定为方阵，分解表示如下：</p>
+<p>$$<br>\bold{A} = \bold{U}\bold{\Sigma}\bold{V}^H<br>$$</p>
+<p>含义基本和特征分解相同，不过是描述对象变成了非方阵。</p>
+<p>很自然我们想到，对方阵的SVD和特征分解是什么关系呢？它们在方阵的情况下一样么？</p>
+<p>SVD和特征分解在方阵情况下不是完全一样的，这是由于计算SVD的时候用到的方法限定的。实际上奇异值的计算是借助了特征值计算而来的，对非方阵<strong>A</strong>，我们用$\bold{A}^H\bold{A}$构造一个方阵，对这个方阵进行特征值分解，得到特征值$\lambda_i$，<strong>A</strong>的奇异值$\sigma_i$就是$\sqrt{\lambda_i}$。</p>
+<p>为啥奇异值和特征值就差一个平方关系呢？从两种分解的定义上我们很容易推得，此处不推导。</p>
+<p>从SVD和特征分解倒是能看出类似于一种哲学式的思想：<strong>我们总是尝试着用熟悉的事物去解释新的事物，建立已知和未知的联系，使我们可以用熟悉的方式处理新事物。</strong> 哎，跑远了跑远了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/14/关于矩阵几何意义的理解/" data-id="cjtvp69jw000k48dui9844ml6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵/">矩阵</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/19/基于Keras的人脸验证demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          基于Keras的人脸验证demo
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/10/机器学习笔记：支持向量机SVM基本原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">机器学习笔记：支持向量机SVM基本原理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GAN/">GAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人工智能/">人工智能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支持向量机/">支持向量机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/矩阵/">矩阵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GAN/" style="font-size: 10px;">GAN</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/机器学习/" style="font-size: 13.33px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/30/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/hello-world/">Tutorial</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/26/GraphSAGE：Node Embedding初探&复现的一些想法/">GraphSAGE：Node Embedding初探&amp;复现的一些想法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/24/2019.3.23水水亚巡场记/">2019.3.23水水亚巡场记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/一些回忆的事/">一些回忆的事</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

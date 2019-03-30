@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>GAN demo: ACG-Style Faces Generating | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用DCGAN学习ACG风格头像的特征分布，训练一个ACG风格头像生成器。 GitHub仓库：A GAN Demo: ACG-Style Faces Generating 这里放GitHub的首页README吧。">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GAN demo: ACG-Style Faces Generating">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="用DCGAN学习ACG风格头像的特征分布，训练一个ACG风格头像生成器。 GitHub仓库：A GAN Demo: ACG-Style Faces Generating 这里放GitHub的首页README吧。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/14.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/72.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/77.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/216.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/221.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/238.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/239.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/249.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/250.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/258.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/260.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/276.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/277.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq4.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq18.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq23.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq29.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq30.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq31.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/hq37.png">
+<meta property="og:updated_time" content="2018-12-12T10:44:43.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GAN demo: ACG-Style Faces Generating">
+<meta name="twitter:description" content="用DCGAN学习ACG风格头像的特征分布，训练一个ACG风格头像生成器。 GitHub仓库：A GAN Demo: ACG-Style Faces Generating 这里放GitHub的首页README吧。">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/14.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-GAN-demo-ACG-Style-Faces-Generating" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/" class="article-date">
+  <time datetime="2018-12-08T11:37:00.000Z" itemprop="datePublished">2018-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      GAN demo: ACG-Style Faces Generating
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用DCGAN学习ACG风格头像的特征分布，训练一个ACG风格头像生成器。</p>
+<p>GitHub仓库：<a href="https://github.com/RikoLi/gan-acgface" target="_blank" rel="noopener">A GAN Demo: ACG-Style Faces Generating</a></p>
+<p>这里放GitHub的首页README吧。</p>
+<a id="more"></a>
+<h1 id="A-GAN-Demo-ACG-Style-Faces-Generating"><a href="#A-GAN-Demo-ACG-Style-Faces-Generating" class="headerlink" title="A GAN Demo: ACG-Style Faces Generating"></a>A GAN Demo: ACG-Style Faces Generating</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Try to build a GAN to generate ACG-style faces. I can pick some out as my SNS avatar, maybe…(if I make it :D)</p>
+<h2 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h2><h3 id="Codes"><a href="#Codes" class="headerlink" title="Codes"></a>Codes</h3><ul>
+<li>main.py</li>
+<li>gan.py</li>
+<li>utils.py</li>
+<li>generate.py</li>
+<li>dcgan.py</li>
+<li>nets.py</li>
+<li>show.html</li>
+<li>show.js</li>
+<li>spider.py</li>
+</ul>
+<p><code>main.py</code> is for training, predicting process controlling. <code>gan.py</code> is for net construction. <code>utils.py</code> is for other tool functions. <code>generate.py</code> is for generating face images. <code>dcgan.py</code> and <code>nets.py</code> are rebuild versions of <code>main.py</code> and <code>gan.py</code> (not complete). <code>show.html</code> and <code>show.js</code> are for future presentation on web via Keras.js. <code>spider.py</code> is for downloading training datas, thanks for the provider Acokil! </p>
+<h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p>Downloaded from the Internet, thanks for the data provider!</p>
+<ul>
+<li>faces.zip</li>
+<li>hqface.zip</li>
+</ul>
+<p><code>faces.zip</code> is an ACG-style avatar images dataset with image size of (96, 96, 3) They are collected from a well-known ACG image website <a href="http://konachan.net" title="Konachan~" target="_blank" rel="noopener">Konachan</a>.</p>
+<p><code>hqface.zip</code> is also collected from Konachan, but I only picked images of higher quality.</p>
+<p>All images in the dataset have been reshaped to appropriate sizes. They are all ACG-style face images.</p>
+<h2 id="Evironment"><a href="#Evironment" class="headerlink" title="Evironment"></a>Evironment</h2><h3 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h3><ul>
+<li>Linux CentOS</li>
+<li>Windows 10</li>
+</ul>
+<p>The linux server mainly serves as training platform. Win10 is for coding.</p>
+<h3 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h3><ul>
+<li>Nvidia 920MX</li>
+<li>Nvidia Tesla K40M</li>
+</ul>
+<p>920MX is my laptop’s GPU, which may not be actully used in this demo.</p>
+<p>K40M is from ZJUSPC. Thanks for the authorization of the usage of K40M from ZJUSPC!</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Code references: <a href="https://github.com/hindupuravinash/the-gan-zoo" target="_blank" rel="noopener">GAN-Zoo</a></p>
+<p>Paper references: </p>
+<ul>
+<li><a href="https://arxiv.org/abs/1406.2661v1" target="_blank" rel="noopener">Generative Adversarial Nets</a> (arxiv id: 1406.2661v1)</li>
+<li><a href="https://arxiv.org/abs/1411.1784v1" target="_blank" rel="noopener">Conditional Generative Adversarial Nets</a> (arxiv id: 1411.1784v1)</li>
+<li><a href="https://arxiv.org/abs/1511.06434v2" target="_blank" rel="noopener">Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</a> (arxiv id: 1511.06434v2)</li>
+</ul>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>Here are some generated avatars. I used a 300-d noise as input and trained for 40k epoches. In each epoch, I used 64 training images to feed the model.</p>
+<p><img src="14.png" alt="14" title="No.14"> <img src="72.png" alt="72" title="No.72"> <img src="77.png" alt="77" title="No.77"> <img src="216.png" alt="216" title="No.216"> <img src="221.png" alt="221" title="No.221"> <img src="238.png" alt="238" title="No.238"> <img src="239.png" alt="239" title="No.239"> <img src="249.png" alt="249" title="No.249"> <img src="250.png" alt="250" title="No.250"> <img src="258.png" alt="258" title="No.258"> <img src="260.png" alt="260" title="No.260"> <img src="276.png" alt="276" title="No.276"> <img src="277.png" alt="277" title="No.277"></p>
+<p>As you can see, the quality of these avatars is not good enough. In fact, for most of the generated images you can only recognize blurry faces so I just picked out some well-performed results. It is hard but worth to improve the model’s performance.</p>
+<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>Try to improve performance via these approaches:</p>
+<ul>
+<li>Use high quality training images</li>
+<li>Use larger training images</li>
+<li>Try CGAN (add conditions)</li>
+</ul>
+<p>I used a web spider (from Acokil, thank you again!) to download more images and scale each of them to a size of (112, 112, 3), a little bit larger than before. Then I adjusted the GAN and trained a new model. It performs better on generating higher-resolution and more-specific-boundary avaters.</p>
+<p>Here are some new examples generated by the new GAN.</p>
+<p><img src="hq4.png" alt="hq4"> <img src="hq18.png" alt="hq18"> <img src="hq23.png" alt="hq23"> <img src="hq29.png" alt="hq29"> <img src="hq30.png" alt="hq30"> <img src="hq31.png" alt="hq31"> <img src="hq37.png" alt="hq37"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/" data-id="cjtvp69jc000348dul4c16vls" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/09/AI整理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AI整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/05/GAN笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GAN笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GAN/">GAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人工智能/">人工智能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支持向量机/">支持向量机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/矩阵/">矩阵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GAN/" style="font-size: 10px;">GAN</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/人工智能/" style="font-size: 10px;">人工智能</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/支持向量机/" style="font-size: 10px;">支持向量机</a> <a href="/tags/机器学习/" style="font-size: 13.33px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/30/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/hello-world/">Tutorial</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/26/GraphSAGE：Node Embedding初探&复现的一些想法/">GraphSAGE：Node Embedding初探&amp;复现的一些想法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/24/2019.3.23水水亚巡场记/">2019.3.23水水亚巡场记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/一些回忆的事/">一些回忆的事</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
