@@ -97,27 +97,30 @@
 <a id="more"></a>
 <h1 id="从向量开始"><a href="#从向量开始" class="headerlink" title="从向量开始"></a>从向量开始</h1><p>为什么从向量说起呢？就像标量一个数（1,2j,-3,5.81,-3.121等等所有复数）是标量体系下的基石一样，向量是矩阵运算体系的基石，它是矩阵代数运算（在矩阵代数中应该叫线性变换？）的基本运算单元，事实上向量是标量的扩充，更一般化，而标量只是特殊的向量而已。</p>
 <h2 id="向量表示什么？"><a href="#向量表示什么？" class="headerlink" title="向量表示什么？"></a>向量表示什么？</h2><p>向量是一组数，这组数的个数称<strong>维度</strong>。比如一个m维向量：</p>
-<p>$$\bold{a} = [a_1, a_2, …, a_m]$$</p>
-<p>我们可以认为它是在m维空间中的一个“实例”，是一个独一无二的个体。</p>
-<p>向量可以用来表示许多物理存在。举个例子来类比吧，Riko是一个根据某种方式定义的空间下存在的人，那么Riko可以看做这个空间下的一个向量：<br>$$<br>Riko = [身高，体重，性别，年龄，职业，…]<br>$$</p>
-<p>向量Riko的维度很高，很可能是无穷维的。这个向量描述了Riko这个人在空间下的全部属性。</p>
+<script type="math/tex; mode=display">\bold{a} = [a_1, a_2, ..., a_m]</script><p>我们可以认为它是在m维空间中的一个“实例”，是一个独一无二的个体。</p>
+<p>向量可以用来表示许多物理存在。举个例子来类比吧，Riko是一个根据某种方式定义的空间下存在的人，那么Riko可以看做这个空间下的一个向量：</p>
+<script type="math/tex; mode=display">
+Riko = [身高，体重，性别，年龄，职业，...]</script><p>向量Riko的维度很高，很可能是无穷维的。这个向量描述了Riko这个人在空间下的全部属性。</p>
 <h2 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h2><p>刚开始学的时候我对范数的理解仅仅是去类比Euclidean范数（对，就是那个元素平方和开方，二范数），后来才知道所有范数应该有着更广义的含义。</p>
 <p>向量范数是对向量在其存在空间内对其“尺度”或者“大小”（广义上的）一种衡量手段，有着不同的定义方式，是一种存在尺度的描述。</p>
 <h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><p>开始我们的重点，矩阵是什么？怎么直观去理解？</p>
 <p>矩阵的书面样子很简洁，m行n列的一组数：</p>
-<p>$$<br>\bold{A} = \begin{bmatrix}<br>a_{11} &amp; \cdots &amp; a_{1n} \<br>\vdots &amp; \ddots &amp; \vdots \<br>a_{m1} &amp; \cdots &amp; a_{mn}<br>\end{bmatrix}<br>$$</p>
-<p>单独一个矩阵几何意义是一种空间上的变换，将他看成一个算子[^1]，表示着一种扭曲原空间的“操作”。<br>[^1]:用算子这个词在数学上可能不够严谨，但这里方便自己理解就说成这样了。</p>
+<script type="math/tex; mode=display">
+\bold{A} = \begin{bmatrix}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{bmatrix}</script><p>单独一个矩阵几何意义是一种空间上的变换，将他看成一个算子<sup><a href="#fn_1" id="reffn_1">1</a></sup>，表示着一种扭曲原空间的“操作”。</p>
 <h2 id="矩阵与向量乘法"><a href="#矩阵与向量乘法" class="headerlink" title="矩阵与向量乘法"></a>矩阵与向量乘法</h2><p>联系矩阵和向量乘法规则，我们可以这样理解矩阵作为因子的作用：</p>
 <ul>
 <li>对原始向量进行了m维空间→n维（或者反过来）空间的升维/降维映射</li>
 <li>一定把m维向量映射到n维或者把n维映射到m维，总之是把向量在两个维度空间之间变换</li>
 </ul>
 <p>比如：</p>
-<p>$$\bold{a}<em>{1\times m} \times \bold{A}</em>{m\times n} = \bold{b}_{1\times n}$$</p>
-<p>就是把原来的m维空间中的向量<strong>a</strong>映射到了n维空间中，起了个新名字叫<strong>b</strong>。</p>
+<script type="math/tex; mode=display">\bold{a}_{1\times m} \times \bold{A}_{m\times n} = \bold{b}_{1\times n}</script><p>就是把原来的m维空间中的向量<strong>a</strong>映射到了n维空间中，起了个新名字叫<strong>b</strong>。</p>
 <h2 id="矩阵与矩阵乘法"><a href="#矩阵与矩阵乘法" class="headerlink" title="矩阵与矩阵乘法"></a>矩阵与矩阵乘法</h2><p>矩阵乘法视为许多种空间变换的连续作用，如：</p>
-<p>$$<br>\bold{C} = \bold{A}\bold{B}<br>$$</p>
-<p>矩阵<strong>C</strong>表示一种变换，这种变换为依次进行变换<strong>A</strong>和<strong>B</strong>的等效变换。</p>
+<script type="math/tex; mode=display">
+\bold{C} = \bold{A}\bold{B}</script><p>矩阵<strong>C</strong>表示一种变换，这种变换为依次进行变换<strong>A</strong>和<strong>B</strong>的等效变换。</p>
 <p>我们知道矩阵乘法中左乘和右乘是不同的，而且行、列数必须协调。其实很好理解，如：存在一个矩阵表示从m维到n维变换，每次变换的起始空间必须是m维或者n维空间，因为矩阵描述的就是这两个维度之间的变换方式，不可能直接对m维空间进行一个p维（p≠m）到n维的变换，因此矩阵乘法一定要协调。</p>
 <p>至于左右乘，可以理解为进行变换的顺序不一样，其等价变换涉及的空间变换关系也不同。</p>
 <h2 id="一些矩阵运算的理解"><a href="#一些矩阵运算的理解" class="headerlink" title="一些矩阵运算的理解"></a>一些矩阵运算的理解</h2><h3 id="逆矩阵与伪逆矩阵"><a href="#逆矩阵与伪逆矩阵" class="headerlink" title="逆矩阵与伪逆矩阵"></a>逆矩阵与伪逆矩阵</h3><p>矩阵的可逆性可以理解为线性变换的可逆性。若方阵<strong>A</strong>可逆，表示<strong>A</strong>这个m维→m维的变换具有可逆性，我可以将m维空间里的向量经过<strong>A</strong>变换成m维空间的另一个向量，这新向量可以通过逆变换$\bold{A}^{-1}$再变换回原来的向量。</p>
@@ -129,16 +132,16 @@
 <li>将原先用一个矩阵描述的线性变换<strong>A</strong>分解为基础的变换叠加</li>
 </ul>
 <p>特征分解定义是这样：</p>
-<p>$$<br>\bold{A} = \bold{U}\bold{\Sigma}\bold{U}^H<br>$$</p>
-<p>酉矩阵<strong>U</strong>描述了变换发生的维度，特征值矩阵$\bold{\Sigma}$描述了每个维度上变换的“强度”或“倍数”，其对角线上元素从上到下是特征值的降序排列。</p>
+<script type="math/tex; mode=display">
+\bold{A} = \bold{U}\bold{\Sigma}\bold{U}^H</script><p>酉矩阵<strong>U</strong>描述了变换发生的维度，特征值矩阵$\bold{\Sigma}$描述了每个维度上变换的“强度”或“倍数”，其对角线上元素从上到下是特征值的降序排列。</p>
 <p>通过特征值分解可以明确看出一个线性变换的主要变换发生在哪个维度上（根据特征向量判断），以及变换的强度如何（根据特征值大小判断）。</p>
 <p>从特征值和特征向量的定义看：</p>
-<p>$$<br>\bold{A}\bold{x} = \lambda\bold{x}<br>$$</p>
-<p>对特征向量进行线性变换只进行在特征向量方向上的伸缩变换，没有其他变换。也就是说，满足这种性质的向量就是一个变换的特征向量，对应伸缩变换的因子就是特征值。</p>
+<script type="math/tex; mode=display">
+\bold{A}\bold{x} = \lambda\bold{x}</script><p>对特征向量进行线性变换只进行在特征向量方向上的伸缩变换，没有其他变换。也就是说，满足这种性质的向量就是一个变换的特征向量，对应伸缩变换的因子就是特征值。</p>
 <h3 id="SVD与奇异值"><a href="#SVD与奇异值" class="headerlink" title="SVD与奇异值"></a>SVD与奇异值</h3><p>SVD即奇异值分解，起到和特征分解类似的作用，也是将一个线性变换分解成基础的变换叠加。</p>
 <p>SVD是对一般矩阵而言的，不要求一定为方阵，分解表示如下：</p>
-<p>$$<br>\bold{A} = \bold{U}\bold{\Sigma}\bold{V}^H<br>$$</p>
-<p>含义基本和特征分解相同，不过是描述对象变成了非方阵。</p>
+<script type="math/tex; mode=display">
+\bold{A} = \bold{U}\bold{\Sigma}\bold{V}^H</script><p>含义基本和特征分解相同，不过是描述对象变成了非方阵。</p>
 <p>很自然我们想到，对方阵的SVD和特征分解是什么关系呢？它们在方阵的情况下一样么？</p>
 <p>SVD和特征分解在方阵情况下不是完全一样的，这是由于计算SVD的时候用到的方法限定的。实际上奇异值的计算是借助了特征值计算而来的，对非方阵<strong>A</strong>，我们用$\bold{A}^H\bold{A}$构造一个方阵，对这个方阵进行特征值分解，得到特征值$\lambda_i$，<strong>A</strong>的奇异值$\sigma_i$就是$\sqrt{\lambda_i}$。</p>
 <p>为啥奇异值和特征值就差一个平方关系呢？从两种分解的定义上我们很容易推得，此处不推导。</p>
@@ -147,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zjuriko.ml/2018/10/14/关于矩阵几何意义的理解/" data-id="cjtx398mx000g8kduxagbkafu" class="article-share-link">Share</a>
+      <a data-url="http://www.zjuriko.ml/2018/10/14/关于矩阵几何意义的理解/" data-id="cjtx3h8cb000gl4dupclhv2mu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵/">矩阵</a></li></ul>

@@ -104,8 +104,8 @@
 <p>重点在理解<strong>对抗</strong>体现在什么地方，个人认为是目标函数的优化方式上体现了对抗思想。传统网络目标函数优化只向一个方向进行，非增即减；GAN的特点在于，目标函数向着一个平衡的鞍点靠近，在靠近过程中同时更新了两个模型。</p>
 <h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><p>生成器是一个完整的网络，输入：随机噪声；输出：生成对象。生成器的输出拿去训练判别器。</p>
 <h1 id="判别器"><a href="#判别器" class="headerlink" title="判别器"></a>判别器</h1><p>判别器是一个完整的网络，输入：真实对象，生成器生成对象；输出：生成对象为真的概率。</p>
-<h1 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h1><p>最小最大化函数：<br>$$ \min_{G}\max_{D} V(D,G) = E\left[log\left(D\left(x\right)\right)\right] + E\left[log\left(1 - D\left(G\left(z\right)\right)\right)\right] $$</p>
-<p>目标函数有两重含义：</p>
+<h1 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h1><p>最小最大化函数：</p>
+<script type="math/tex; mode=display">\min_{G}\max_{D} V(D,G) = E\left[log\left(D\left(x\right)\right)\right] + E\left[log\left(1 - D\left(G\left(z\right)\right)\right)\right]</script><p>目标函数有两重含义：</p>
 <ol>
 <li>判别器的性能</li>
 <li>生成器的性能</li>
@@ -120,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zjuriko.ml/2018/12/05/GAN笔记/" data-id="cjtx398mg00048kduuug0c8hh" class="article-share-link">Share</a>
+      <a data-url="http://www.zjuriko.ml/2018/12/05/GAN笔记/" data-id="cjtx3h8bz0004l4duyivwoa7g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GAN/">GAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>

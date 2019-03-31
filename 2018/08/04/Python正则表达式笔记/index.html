@@ -91,20 +91,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>注：整理自 <a href="http://www.liaoxuefeng.com" target="_blank" rel="noopener">www.liaoxuefeng.com</a></p>
+        <p>注：整理自 www.liaoxuefeng.com</p>
 <a id="more"></a>
-<p>##re模块</p>
-<p>###导入re模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br></pre></td></tr></table></figure></p>
-<p>###match()方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match()</span><br></pre></td></tr></table></figure></p>
+<h2 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h2><h3 id="导入re模块"><a href="#导入re模块" class="headerlink" title="导入re模块"></a>导入re模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br></pre></td></tr></table></figure>
+<h3 id="match-方法"><a href="#match-方法" class="headerlink" title="match()方法"></a>match()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match()</span><br></pre></td></tr></table></figure>
 <p>match()方法匹配成功返回一个Match对象，否则返回None。<br>常见使用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str = &apos;xxxxx&apos;    #待处理字符串</span><br><span class="line">if re.match(r&apos;RegExp&apos;, str): #r表示字符串内不使用转义</span><br><span class="line">    pass    #匹配成功</span><br><span class="line">else:</span><br><span class="line">    pass    #匹配失败</span><br></pre></td></tr></table></figure></p>
-<p>###split()方法<br>用于正则表达式切分字符串。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(r&apos;RegExp&apos;, str)</span><br></pre></td></tr></table></figure></p>
+<h3 id="split-方法"><a href="#split-方法" class="headerlink" title="split()方法"></a>split()方法</h3><p>用于正则表达式切分字符串。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(r&apos;RegExp&apos;, str)</span><br></pre></td></tr></table></figure></p>
 <p>返回切分好的list。</p>
-<p>###分组与group()方法<br>在正则表达式中使用()来分组，如果分了组，就可以对Match对象用group()方法来提取组员。<br>eg：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.match(r&apos;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&apos;, &apos;010-12345&apos;)</span><br><span class="line">m.group(0)  #返回&apos;010-12345&apos;，即原字符串</span><br><span class="line">m.group(1)  #返回&apos;010&apos;，即第一个匹配组</span><br><span class="line">m.group(2)  #返回&apos;12345&apos;，即第二个匹配组</span><br></pre></td></tr></table></figure></p>
+<h3 id="分组与group-方法"><a href="#分组与group-方法" class="headerlink" title="分组与group()方法"></a>分组与group()方法</h3><p>在正则表达式中使用()来分组，如果分了组，就可以对Match对象用group()方法来提取组员。<br>eg：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.match(r&apos;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&apos;, &apos;010-12345&apos;)</span><br><span class="line">m.group(0)  #返回&apos;010-12345&apos;，即原字符串</span><br><span class="line">m.group(1)  #返回&apos;010&apos;，即第一个匹配组</span><br><span class="line">m.group(2)  #返回&apos;12345&apos;，即第二个匹配组</span><br></pre></td></tr></table></figure></p>
 <p>※此外还有groups()方法，对Match对象使用，返回一个每组按顺序组成的tuple，不包含原字符串。</p>
-<p>###预编译和compile()方法<br>使用预编译可以提高大量使用RegExp时的效率。<br>eg：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">re_telNumber = re.compile(r&apos;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&apos;)   #将RegExp匹配样式预编译，以便之后直接使用</span><br><span class="line">re_telNumber.match(&apos;010-12345&apos;).groups()    #直接匹配，match()方法的参数只有待处理字符串</span><br><span class="line">#返回(&apos;010&apos;, &apos;12345&apos;)</span><br></pre></td></tr></table></figure></p>
-<p>##匹配语法</p>
-<p>###精确匹配</p>
-<ul>
+<h3 id="预编译和compile-方法"><a href="#预编译和compile-方法" class="headerlink" title="预编译和compile()方法"></a>预编译和compile()方法</h3><p>使用预编译可以提高大量使用RegExp时的效率。<br>eg：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">re_telNumber = re.compile(r&apos;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&apos;)   #将RegExp匹配样式预编译，以便之后直接使用</span><br><span class="line">re_telNumber.match(&apos;010-12345&apos;).groups()    #直接匹配，match()方法的参数只有待处理字符串</span><br><span class="line">#返回(&apos;010&apos;, &apos;12345&apos;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="匹配语法"><a href="#匹配语法" class="headerlink" title="匹配语法"></a>匹配语法</h2><h3 id="精确匹配"><a href="#精确匹配" class="headerlink" title="精确匹配"></a>精确匹配</h3><ul>
 <li><p>\d<br>匹配一个数字</p>
 </li>
 <li><p>\w<br>匹配一个字母或数字</p>
@@ -112,7 +109,7 @@
 <li><p>.<br>匹配任意一个字符</p>
 </li>
 </ul>
-<p>###匹配变长字符<br>作为匹配表达式后缀：</p>
+<h3 id="匹配变长字符"><a href="#匹配变长字符" class="headerlink" title="匹配变长字符"></a>匹配变长字符</h3><p>作为匹配表达式后缀：</p>
 <ul>
 <li><p>{n}<br>匹配n个数字</p>
 </li>
@@ -125,15 +122,14 @@
 <li><p>?<br>匹配0个或1个字符</p>
 </li>
 </ul>
-<p>###进阶</p>
-<ul>
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><ul>
 <li><p>[]<br>匹配范围<br>eg：[0-9a-zA-z\_] 匹配一个数字or字母or下划线</p>
 </li>
 <li><p>a|b<br>匹配a或者b<br>eg：(p|P)ython 匹配python或者Python</p>
 </li>
 <li><p>^<br>匹配开头<br>eg：^\d 匹配以一个数字开头</p>
 </li>
-<li><p>$<br>匹配结尾<br>eg：\d\$ 匹配以一个数字结尾</p>
+<li><p>$<br>匹配结尾<br>eg：\d$ 匹配以一个数字结尾</p>
 </li>
 </ul>
 <p>※^和$一般成对使用，能更规范地进行匹配。</p>
@@ -141,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zjuriko.ml/2018/08/04/Python正则表达式笔记/" data-id="cjtx398mn00098kdu8gl16lzs" class="article-share-link">Share</a>
+      <a data-url="http://www.zjuriko.ml/2018/08/04/Python正则表达式笔记/" data-id="cjtx3h8c30008l4du7e7bugmo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>

@@ -118,13 +118,12 @@
 <p><img src="inception.png" alt="inception"></p>
 <p>使用了Inception的Block架构，一条支路用连续的两个3×3卷积核代替5×5卷积核，减少参数量。此外增加了大量的BN层用于对非线性激活函数之后的feature map进行标准化，在Block之间加入了Dropout层进行正则化处理。</p>
 <h1 id="特征相似性比较"><a href="#特征相似性比较" class="headerlink" title="特征相似性比较"></a>特征相似性比较</h1><p>使用训练好的模型进行特征抽取，得到全连接层的输出，使用一些距离测度进行相似性分析。</p>
-<h2 id="Euclidean距离"><a href="#Euclidean距离" class="headerlink" title="Euclidean距离"></a>Euclidean距离</h2><p>$$ ||\bold{x}||<em>2 = \sqrt{\sum</em>{i=1}^N {x_i}^2} $$</p>
-<p>即欧几里得距离，向量L2范数。向量$\bold{x}$为进行相似度判断的两个特征向量的差向量（对应元素做差）。</p>
+<h2 id="Euclidean距离"><a href="#Euclidean距离" class="headerlink" title="Euclidean距离"></a>Euclidean距离</h2><script type="math/tex; mode=display">||\bold{x}||_2 = \sqrt{\sum_{i=1}^N {x_i}^2}</script><p>即欧几里得距离，向量L2范数。向量$\bold{x}$为进行相似度判断的两个特征向量的差向量（对应元素做差）。</p>
 <h2 id="余弦距离"><a href="#余弦距离" class="headerlink" title="余弦距离"></a>余弦距离</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/" data-id="cjtx398n2000k8kduirh9l9qn" class="article-share-link">Share</a>
+      <a data-url="http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/" data-id="cjtx3h8cg000kl4du8t5h84ol" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
