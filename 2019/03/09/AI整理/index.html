@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="逢田文明博物馆">
 <meta property="og:description" content="2018-2019春夏学期人工智能课程内容整理。不定期更新。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-20T16:27:59.624Z">
+<meta property="og:updated_time" content="2019-03-31T15:37:17.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AI整理">
 <meta name="twitter:description" content="2018-2019春夏学期人工智能课程内容整理。不定期更新。">
@@ -148,6 +148,7 @@
 <p>alpha、beta初始化为负、正无穷，每次搜索一个节点的子节点后，根据子节点minimax value大小&amp;当前节点角色（MAX或MIN），确定当前节点的一个边界，并回溯至整棵树的根节点，途中所有经过节点的边界都进行更新。</p>
 <p>边界描述了当前节点minimax value的取值范围，根据边界可以避免访问一些子树，即剪枝。</p>
 <h3 id="Monte-Carlo-Tree-Search：蒙特卡洛树搜索"><a href="#Monte-Carlo-Tree-Search：蒙特卡洛树搜索" class="headerlink" title="Monte Carlo Tree Search：蒙特卡洛树搜索"></a>Monte Carlo Tree Search：蒙特卡洛树搜索</h3><p>基本思想：基于多次实验的统计情况，构建一棵博弈树的子树，其中节点为实验中访问到的节点。根据每个节点的访问次数和对应游戏结果计算选择该点为下一个状态的概率，选择概率大的为下个状态。</p>
+<p>决策核心依据：<strong>概率</strong>！！</p>
 <p>每个节点属性：</p>
 <ul>
 <li>实验中由此节点开始最终游戏胜利的次数</li>
@@ -169,7 +170,7 @@
 <li>constraint set：约束条件构成的集合</li>
 </ul>
 <p>CSP更重视满足约束问题的一个解，更重视结果而非过程。</p>
-<h3 id="Constraint-Graph：约束图"><a href="#Constraint-Graph：约束图" class="headerlink" title="Constraint Graph：约束图"></a>Constraint Graph：约束图</h3><p>一种描述约束问题的结构：</p>
+<h3 id="Constraint-Graph-约束图"><a href="#Constraint-Graph-约束图" class="headerlink" title="Constraint Graph 约束图"></a>Constraint Graph 约束图</h3><p>一种描述约束问题的结构：</p>
 <ul>
 <li>node: 问题的变量</li>
 <li>edge: 变量的相关（节点之间连接一条边表示两个节点表示的变量存在相互约束关系）</li>
@@ -202,17 +203,53 @@
 </ul>
 </li>
 </ul>
-<p><strong>Inference：推理</strong><br>推理用来动态减小domain的大小，从而减小可能的搜索空间。</p>
-<p>两个要素：</p>
+<h4 id="Inference：推理"><a href="#Inference：推理" class="headerlink" title="Inference：推理"></a>Inference：推理</h4><p>推理用来动态减小domain的大小，从而减小可能的搜索空间。区别了回溯法与普通DFS。</p>
+<p>回溯法中要保证两个一致性：</p>
 <ul>
-<li>Forward Checking：进行一个变量赋值后，确定与其构成约束关系的下个节点（子节点）变量的值域，去掉illegal的可能性，只向下进行一步（local consistency）</li>
-<li>Arc Consistency：to be continued…</li>
+<li>Node Consistency：每个节点全部取值满足自身约束，即在值域内取值</li>
+<li>Arc Consistency：每个节点自身全部取值满足邻居节点的约束</li>
 </ul>
+<p>保证Arc Consistency的两种方法：</p>
+<ul>
+<li><p><strong>Forward Checking</strong><br>进行一个变量赋值后，确定与其构成约束关系的邻居节点变量的值域，去掉illegal的可能性。</p>
+</li>
+<li><p><strong>AC-3算法（伪代码见ppt）</strong><br>可视为每次对节点赋值前的初始化，用来修改节点的值域，检查arc consistency。如果满足一致性，进行下一轮赋值；如果不满足，回溯到上个状态。</p>
+</li>
+</ul>
+<p>AC-3比forward checking稍微快一点。</p>
+<p>回溯法整体流程：赋值（同时保证node consistency）→ 做forward checking/检查arc consistency → 赋值 → …</p>
+<hr>
+<p><strong>3.31</strong></p>
+<h2 id="Knowledge-and-Reasoning-知识表示与推理"><a href="#Knowledge-and-Reasoning-知识表示与推理" class="headerlink" title="Knowledge and Reasoning 知识表示与推理"></a>Knowledge and Reasoning 知识表示与推理</h2><h3 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h3><ul>
+<li>断言sentence：有真伪之分的一个判断</li>
+<li>语法syntax：规定了断言的格式</li>
+<li>语义semantic：规定了断言的真伪</li>
+<li>模型model：使断言$\alpha$为真的条件$m$，条件$m$的集合记为$M(\alpha)$</li>
+<li>蕴含entailment：描述两个断言之间的关系，$KB\vDash\alpha$，表示$KB$蕴含$\alpha$，即$KB$为真时，$\alpha$一定为真，也意味着$M(KB)\sube M(\alpha)$</li>
+</ul>
+<h3 id="推理语法"><a href="#推理语法" class="headerlink" title="推理语法"></a>推理语法</h3><h4 id="语法定义"><a href="#语法定义" class="headerlink" title="语法定义"></a>语法定义</h4><p>规定了断言之间进行推理的规则、运算规律。</p>
+<p>用P表示断言，断言之间运算结果仍为断言，运算如下：</p>
+<ul>
+<li>negation: $\neg P$</li>
+<li>conjunction: $P_1 \land P_2$</li>
+<li>disjunction: $P_1 \lor P_2$</li>
+<li>implication: $P_1 \implies P_2$ 等价于 $\neg P_1 \lor P_2$</li>
+<li>biconditional: $P_1 \iff P_2$ 等价于 $(P_1\implies P_2)\land(P_2\implies P_1)$</li>
+</ul>
+<h4 id="运算律"><a href="#运算律" class="headerlink" title="运算律"></a>运算律</h4><ul>
+<li>commutativity: 交换律</li>
+<li>associativity: 结合律</li>
+<li>double-negation elimination: 双重否定相消</li>
+<li>contraposition: 逆否不变 $(\alpha\implies \beta) \equiv (\neg\beta \implies \neg\alpha)$</li>
+<li>De Morgan: 德摩根律</li>
+<li>distributivity: 分配率</li>
+</ul>
+<h4 id="Resolution-Rule-归结法"><a href="#Resolution-Rule-归结法" class="headerlink" title="Resolution Rule 归结法"></a>Resolution Rule 归结法</h4><p>一种对已知断言集合进行推理的方法。<br>（未完待续）</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zjuriko.ml/2019/03/09/AI整理/" data-id="cjtweap7900011sduc27lz7t9" class="article-share-link">Share</a>
+      <a data-url="http://www.zjuriko.ml/2019/03/09/AI整理/" data-id="cjtx398ma00018kdusw2ikzuc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li></ul>
