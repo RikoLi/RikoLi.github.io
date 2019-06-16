@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.4k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.6k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,9 +401,153 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>期末复习，从第六章开始，前面的之后再补上。</p>
+        <p>期末复习。</p>
 <a id="more"></a>
-<h2 id="Chapter-6-链路层"><a href="#Chapter-6-链路层" class="headerlink" title="Chapter 6 链路层"></a>Chapter 6 链路层</h2><h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><ul>
+<h2 id="Chapter-1-概述"><a href="#Chapter-1-概述" class="headerlink" title="Chapter 1 概述"></a>Chapter 1 概述</h2><h3 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h3><ul>
+<li>host</li>
+<li>server</li>
+</ul>
+<h3 id="接入方式"><a href="#接入方式" class="headerlink" title="接入方式"></a>接入方式</h3><ul>
+<li>DSL：网络、电话线共用一条线，各用户独立用各自的线</li>
+<li>电缆：各用户分享同一根线</li>
+</ul>
+<h3 id="传输"><a href="#传输" class="headerlink" title="传输"></a>传输</h3><ul>
+<li>transmission delay：数据包长度（比特）/传输速率，输入速率&gt;发送速率时数据包排队</li>
+<li>propagation delay：传输距离（物理）/介质中传输速率</li>
+</ul>
+<h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><p>主要在路由器之间体现：</p>
+<ul>
+<li>电路交换：路由器彼此之间有多条预留专线，不共享</li>
+<li>包交换（packet-switching）：路由器共享信道带宽</li>
+</ul>
+<h3 id="ISP-网络服务提供者"><a href="#ISP-网络服务提供者" class="headerlink" title="ISP 网络服务提供者"></a>ISP 网络服务提供者</h3><ul>
+<li>端系统（网络边缘/子网）需要接入ISP才能接入互联网。</li>
+<li>ISP互联：所有ISP通过中间一些路由器进行互联，起到降低连接复杂度的目的，避免每个ISP与其他所有都需要直接连接</li>
+</ul>
+<h3 id="延时"><a href="#延时" class="headerlink" title="延时"></a>延时</h3><p>（收到包后立刻）处理延时、在发送队列中等待延时、传输延时、传播延时。</p>
+<script type="math/tex; mode=display">
+d = d_{proc} + d_{queue} + d_{trans} + d_{prop}</script><p>队列等候延时随流量强度指数增长。</p>
+<h3 id="互联网协议栈"><a href="#互联网协议栈" class="headerlink" title="互联网协议栈"></a>互联网协议栈</h3><p>五层结构，只学习四层（无物理层）。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>处理数据类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>message</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>segment</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>datagram</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>frame</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>逐层向下封装更多报头，数据变长。</p>
+<h2 id="Chapter-2-应用层"><a href="#Chapter-2-应用层" class="headerlink" title="Chapter 2 应用层"></a>Chapter 2 应用层</h2><h3 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h3><p>属于应用层，面向传输层的接口，将应用层message转换为传输层segment，用于网络位置不同的进程间通信。</p>
+<p>应用层应用的标识：IP地址+端口号，IP地址表示网络位置，端口号表示进程。</p>
+<h3 id="客户端-服务器架构"><a href="#客户端-服务器架构" class="headerlink" title="客户端-服务器架构"></a>客户端-服务器架构</h3><h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><ul>
+<li>使用client-server架构</li>
+<li>传输层使用TCP连接，端口80</li>
+</ul>
+<p>HTTP 请求：</p>
+<ul>
+<li>类型：GET，POST，…</li>
+<li>header</li>
+</ul>
+<p>HTTP 响应：</p>
+<ul>
+<li>状态行：HTTP协议号、连接状态</li>
+<li>header</li>
+<li>请求的数据</li>
+</ul>
+<p><strong>Cookies：</strong><br>保存状态，client首次向某服务器发送HTTP请求的时候，服务器创建cookie信息并随着HTTP响应返回给client，client本地保存cookie信息，下次请求同一个服务器的时候将携带cookie信息</p>
+<p><strong>Web cache、代理服务器：</strong><br>避免client与server进行直接通信。cache存储在代理服务器上，client请求origin server的时候，先请求cache所在代理服务器，若有缓存则直接返回数据；否则，代理服务器请求origin server，然后响应再返回给client。</p>
+<h4 id="SMTP"><a href="#SMTP" class="headerlink" title="SMTP"></a>SMTP</h4><p>用于电子邮件发送。</p>
+<p>组成：</p>
+<ul>
+<li>user agent：用户设备，向mail server发请求</li>
+<li>mail server：存储邮件，使用SMTP协议发送邮件</li>
+</ul>
+<p>先建立TCP连接，再发送信息，可靠传输。</p>
+<p>user agent和自己的mail server之间可以用HTTP或SMTP协议，mail server彼此间只能用SMTP协议。</p>
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>域名解析，实现域名到IP地址的转换。分布式、层次化结构。</p>
+<ul>
+<li>顶级域名解析服务器（TLD）：解析.com, .org, .net, .uk, .jp, …等顶级域名的服务器</li>
+<li>权威DNS服务器：特定组织提供其特定域名的IP解析</li>
+<li>本地DNS服务器：存储了域名-IP地址翻译对（可能过期），加速解析过程，一般优先访问</li>
+</ul>
+<p>问询方式：</p>
+<ul>
+<li>iterated：优先问询local DNS，然后依次问询root DNS，TLD DNS，权威DNS，每一步都返回结果到local DNS</li>
+<li>recursive：优先问询local DNS，然后问询root DNS，再由root DNS问询TLD DNS，…每次向下一级DNS服务器问询，直到最后得到IP地址再递归返回</li>
+</ul>
+<p>DNS记录（RR）：</p>
+<ul>
+<li>name：域名</li>
+<li>value：对应IP</li>
+<li>type：解析类型，指定value的值</li>
+<li>ttl：记录缓存时间</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>type种类</th>
+<th>对应value类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>IP地址</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>正式域名</td>
+</tr>
+<tr>
+<td>NS</td>
+<td>权威DNS解析服务器域名</td>
+</tr>
+<tr>
+<td>MX</td>
+<td>域名对应的邮件服务器域名</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="P2P架构"><a href="#P2P架构" class="headerlink" title="P2P架构"></a>P2P架构</h3><h4 id="BT"><a href="#BT" class="headerlink" title="BT"></a>BT</h4><p>将文件分成多个chunks，参加BT下载的各用户之间互相传输chunks。</p>
+<p>组成：</p>
+<ul>
+<li>tracker：追踪torrent中每个用户的行为，管理新加入的用户</li>
+<li>torrent：记录了参加chunks传输的用户组</li>
+</ul>
+<p><strong>传输机制：</strong><br>请求：</p>
+<ul>
+<li>rarest-first：每个用户优先请求自己缺少的，其他人拥有最少的chunk</li>
+</ul>
+<p>发送：</p>
+<ul>
+<li>tit-for-tat：每10s，对接收速率排序，选择最快的4个用户发送chunk</li>
+<li>randomly-select：每30s，随机选一个用户发送chunk</li>
+</ul>
+<h3 id="CDN-内容分布网络"><a href="#CDN-内容分布网络" class="headerlink" title="CDN 内容分布网络"></a>CDN 内容分布网络</h3><p>提供了流媒体存储、服务的解决方案。</p>
+<p>流媒体被切分成小块，以不同码率编码存储，复制存储于多台物理位置不同的CDN服务器上。用户请求流媒体URL，由DNS直接解析到CDN的IP地址，请求CDN服务器，返回流媒体。流媒体传输中时刻检测网络状况，实时选择当前网络状况下最好质量编码的流媒体块进行传输（DASH）。</p>
+<h2 id="Chapter-3-传输层"><a href="#Chapter-3-传输层" class="headerlink" title="Chapter 3 传输层"></a>Chapter 3 传输层</h2><h2 id="Chapter-6-链路层"><a href="#Chapter-6-链路层" class="headerlink" title="Chapter 6 链路层"></a>Chapter 6 链路层</h2><h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><ul>
 <li>链路层提供相邻两个网络设备端口之间的通信服务，使用MAC地址导向。</li>
 <li>有自己独特的报文头</li>
 <li>使用Ethernet协议</li>
@@ -495,7 +639,7 @@ height:50vh;
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/06/03/计算机网络期末复习/">http://www.zjuriko.ml/2019/06/03/计算机网络期末复习/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/06/03/计算机网络期末复习/">June 3rd 2019, 8:16:42 pm</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/06/03/计算机网络期末复习/">June 6th 2019, 10:36:02 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/06/03/计算机网络期末复习/">June 16th 2019, 5:32:27 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -624,7 +768,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-6-链路层"><span class="toc-number">1.</span> <span class="toc-text">Chapter 6 链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务"><span class="toc-number">1.1.</span> <span class="toc-text">服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现设备"><span class="toc-number">1.2.</span> <span class="toc-text">实现设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误检测"><span class="toc-number">1.3.</span> <span class="toc-text">错误检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#奇偶校验"><span class="toc-number">1.3.1.</span> <span class="toc-text">奇偶校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CRC校验"><span class="toc-number">1.3.2.</span> <span class="toc-text">CRC校验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多接入协议"><span class="toc-number">1.4.</span> <span class="toc-text">多接入协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决途径"><span class="toc-number">1.5.</span> <span class="toc-text">解决途径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#信道分配-channel-partitionning"><span class="toc-number">1.5.1.</span> <span class="toc-text">信道分配 channel partitionning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#随机访问-random-access"><span class="toc-number">1.5.2.</span> <span class="toc-text">随机访问 random access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#轮流访问-taking-turns"><span class="toc-number">1.5.3.</span> <span class="toc-text">轮流访问 taking turns</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局域网"><span class="toc-number">1.6.</span> <span class="toc-text">局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MAC地址"><span class="toc-number">1.6.1.</span> <span class="toc-text">MAC地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ARP：address-resolution-protocol"><span class="toc-number">1.6.2.</span> <span class="toc-text">ARP：address resolution protocol</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ethernet"><span class="toc-number">1.7.</span> <span class="toc-text">Ethernet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机"><span class="toc-number">1.8.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟LAN"><span class="toc-number">1.9.</span> <span class="toc-text">虚拟LAN</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-1-概述"><span class="toc-number">1.</span> <span class="toc-text">Chapter 1 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#网络边缘"><span class="toc-number">1.1.</span> <span class="toc-text">网络边缘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接入方式"><span class="toc-number">1.2.</span> <span class="toc-text">接入方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输"><span class="toc-number">1.3.</span> <span class="toc-text">传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接方式"><span class="toc-number">1.4.</span> <span class="toc-text">连接方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISP-网络服务提供者"><span class="toc-number">1.5.</span> <span class="toc-text">ISP 网络服务提供者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#延时"><span class="toc-number">1.6.</span> <span class="toc-text">延时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#互联网协议栈"><span class="toc-number">1.7.</span> <span class="toc-text">互联网协议栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-2-应用层"><span class="toc-number">2.</span> <span class="toc-text">Chapter 2 应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket"><span class="toc-number">2.1.</span> <span class="toc-text">Socket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-服务器架构"><span class="toc-number">2.2.</span> <span class="toc-text">客户端-服务器架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP"><span class="toc-number">2.2.1.</span> <span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SMTP"><span class="toc-number">2.2.2.</span> <span class="toc-text">SMTP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS"><span class="toc-number">2.2.3.</span> <span class="toc-text">DNS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P2P架构"><span class="toc-number">2.3.</span> <span class="toc-text">P2P架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BT"><span class="toc-number">2.3.1.</span> <span class="toc-text">BT</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN-内容分布网络"><span class="toc-number">2.4.</span> <span class="toc-text">CDN 内容分布网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-3-传输层"><span class="toc-number">3.</span> <span class="toc-text">Chapter 3 传输层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chapter-6-链路层"><span class="toc-number">4.</span> <span class="toc-text">Chapter 6 链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务"><span class="toc-number">4.1.</span> <span class="toc-text">服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现设备"><span class="toc-number">4.2.</span> <span class="toc-text">实现设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误检测"><span class="toc-number">4.3.</span> <span class="toc-text">错误检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#奇偶校验"><span class="toc-number">4.3.1.</span> <span class="toc-text">奇偶校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CRC校验"><span class="toc-number">4.3.2.</span> <span class="toc-text">CRC校验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多接入协议"><span class="toc-number">4.4.</span> <span class="toc-text">多接入协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决途径"><span class="toc-number">4.5.</span> <span class="toc-text">解决途径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#信道分配-channel-partitionning"><span class="toc-number">4.5.1.</span> <span class="toc-text">信道分配 channel partitionning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#随机访问-random-access"><span class="toc-number">4.5.2.</span> <span class="toc-text">随机访问 random access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#轮流访问-taking-turns"><span class="toc-number">4.5.3.</span> <span class="toc-text">轮流访问 taking turns</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局域网"><span class="toc-number">4.6.</span> <span class="toc-text">局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MAC地址"><span class="toc-number">4.6.1.</span> <span class="toc-text">MAC地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ARP：address-resolution-protocol"><span class="toc-number">4.6.2.</span> <span class="toc-text">ARP：address resolution protocol</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ethernet"><span class="toc-number">4.7.</span> <span class="toc-text">Ethernet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机"><span class="toc-number">4.8.</span> <span class="toc-text">交换机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟LAN"><span class="toc-number">4.9.</span> <span class="toc-text">虚拟LAN</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -637,14 +781,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1135,21 +1271,21 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="互联网"><span class="iconfont-archer">&#xe606;</span>互联网</span>
+    
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
         <span class="sidebar-tag-name" data-tags="支持向量机"><span class="iconfont-archer">&#xe606;</span>支持向量机</span>
-    
-        <span class="sidebar-tag-name" data-tags="互联网"><span class="iconfont-archer">&#xe606;</span>互联网</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
