@@ -461,8 +461,8 @@ s.t.\space{}y_i(\bold{w}^T\bold{x}_i+b) \ge 1, \space{} i = 1,2,...n
 <h1 id="再进一步"><a href="#再进一步" class="headerlink" title="再进一步"></a>再进一步</h1><p>我们已经推导得出基本的线性可分二分类硬间隔SVM的数学表达了，接下来我们来看看怎么让这个模型更加贴近实用，我们还需要补充一些内容。</p>
 <h2 id="核函数（Kernel-Function）"><a href="#核函数（Kernel-Function）" class="headerlink" title="核函数（Kernel Function）"></a>核函数（Kernel Function）</h2><p>核函数的引入帮助我们将SVM从只支持线性可分拓展到支持线性不可分。</p>
 <p>对非线性可分问题，我们将原特征空间中线性不可分的样本点通过某类映射$\phi(\cdot)$映射到高维特征空间中，在这个特征空间中它们是线性可分的。之前的推导中需要计算特征向量的内积$\bold{x}_i^T\bold{x}_j$，经过映射后对应高维特征向量也需要计算内积$\phi(\bold{x}_i)^T\phi(\bold{x}_j)$，可是因为向量维数增多，直接计算高维向量内积很困难，于是我们构想一个函数$k(\cdot, \cdot)$使其<strong>能在原始特征空间中使用原始特征向量直接计算高维特征向量内积的结果</strong>，这种函数称作<strong>核函数</strong>。</p>
-<h2 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h2><p>核函数似乎已经解决了线性不可分问题，实际上在真实环境下，找到一个完美将特征向量分开的核函数是极其困难的，因此我们要允许SVM在一定数量的数据上“出错”，这些出错的数据点要被允许出现在SVM的间隔内，这种方案称为<strong>软间隔</strong>。</p>
-<p>“出错”我们表示为不满足SVM的约束条件：</p>
+<h2 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h2><p>核函数似乎已经解决了线性不可分问题，实际上在真实环境下，只用核函数可能会导致过拟合的问题，因此我们要向SVM中加入正则项进行泛化，这样才能尽可能表达数据的真实分布情况，而非仅拟合出学习样本数据的分布，这种思想下SVM的决策平面称为<strong>软间隔</strong>。</p>
+<p>“软间隔”正则化可以被我们表示为不满足SVM约束条件：</p>
 <script type="math/tex; mode=display">
 y_i(\bold{w}^T\bold{x}_i+b) \ge 1</script><p>于是我们将优化目标修改为：</p>
 <script type="math/tex; mode=display">
@@ -478,7 +478,7 @@ y_i(\bold{w}^T\bold{x}_i+b) \ge 1</script><p>于是我们将优化目标修改�
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">September 10th 2018, 11:52:59 pm</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">April 2nd 2019, 5:55:22 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">July 29th 2019, 9:35:15 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -625,56 +625,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1171,13 +1121,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
-    
-        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
-    
         <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
+    
+        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
+    
+        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
         <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
