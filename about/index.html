@@ -376,7 +376,8 @@ height:50vh;
 <p><img id="page-img" src></p>
 <script>
 let img = document.getElementById('page-img');
-img.src = './index/'+Math.round(Math.random()*2+1)+'.png';
+let seed = Math.random()*3+0.5;
+img.src = './index/'+Math.round(seed)+'.png';
 </script>
     </article>
 </main>
@@ -471,10 +472,6 @@ img.src = './index/'+Math.round(Math.random()*2+1)+'.png';
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
     
     
     
