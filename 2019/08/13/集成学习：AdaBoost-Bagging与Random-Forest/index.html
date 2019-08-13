@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">842</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -423,21 +423,62 @@ height:50vh;
 <p>样本权重$D_m(x)$的引入，使得每轮迭代都更关注上一轮迭代中的基学习器做错的样本，令新一轮迭代生成的基学习器性能进行提升。其本质上是通过$D_m(x)$改变训练样本的分布，更突出前一轮训练中失败的样本，在后一轮作为重点。</p>
 <p>基学习器权重$\alpha_t$的引入，使最终集成的学习器中更重视性能好的基学习器，而性能则通过$\epsilon$进行刻画，$\epsilon$是基学习器的错误率。$\alpha_t$的确定遵从“错误率低的基学习器占权重高”这一思想。错误率同样影响了下一轮样本权重的更新。</p>
 <h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>最终目的是生成形如$H(x) = \sum_{t=1}^T \alpha_t h_t(x)$的集成学习器，因此我们需要计算所有的$\alpha_t$和$h_t(x)$。</p>
-<p>在所有迭代的最开始，所有训练样本都是平等的，因此权重均分。假设有$N$个样本：</p>
+<ol>
+<li><p>在所有迭代的最开始，所有训练样本都是平等的，因此权重均分。假设有$N$个样本：</p>
 <script type="math/tex; mode=display">
-D_1(x) = \frac{1}{N}</script><p>然后开始$T$轮迭代，每轮生成第$t$个基学习器：</p>
+D_1(x) = \frac{1}{N}</script></li>
+<li><p>然后开始$T$轮迭代，每轮生成第$t$个基学习器：</p>
 <script type="math/tex; mode=display">
-h_t(x) = New\space Learner(D_t)</script><p>判断$h_t(x)$的性能如何，计算错误率$\epsilon_t$：</p>
+h_t(x) = New\space Learner(D_t)</script></li>
+<li><p>判断$h_t(x)$的性能如何，计算错误率$\epsilon_t$：</p>
 <script type="math/tex; mode=display">
-\epsilon_t = P\left(h_t(x)\neq y\right)</script><p>以$\epsilon$为指导，更新学习器权重与样本权重：</p>
+\epsilon_t = P\left(h_t(x)\neq y\right)</script></li>
+<li><p>以$\epsilon$为指导，更新学习器权重与样本权重：</p>
 <script type="math/tex; mode=display">
-\alpha_t = \frac{1}{2} \ln\left(\frac{1-\epsilon_t}{\epsilon_t}\right)</script><p>更新样本权重$D_t(x)$，$Z_t$为归一化因子，使每次$D_t(x)$都为归一化的权重：</p>
+\alpha_t = \frac{1}{2} \ln\left(\frac{1-\epsilon_t}{\epsilon_t}\right)</script></li>
+<li><p>更新样本权重$D_t(x)$，$Z_t$为归一化因子，使每次$D_t(x)$都为归一化的权重：</p>
 <script type="math/tex; mode=display">
 D_{t+1}(x) = \frac{D_t(x) e^{-\alpha_t h_t(x) y}}{Z_t} \\
-Z_t = \sum_x D_t(x)e^{-\alpha_t h_t(x) y}</script><p>达到迭代上限，得到集成学习器$H(x) = \sum_{t=1}^T \alpha_t h_t(x)$。</p>
-<h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><p>有关学习器权重和样本权重的推导由最小化指数损失函数得出。</p>
-<p>…</p>
-<h2 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h2><h2 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h2>
+Z_t = \sum_x D_t(x)e^{-\alpha_t h_t(x) y}</script></li>
+<li><p>达到迭代上限，得到集成学习器$H(x) = \sum_{t=1}^T \alpha_t h_t(x)$。</p>
+</li>
+</ol>
+<h3 id="推导与理解"><a href="#推导与理解" class="headerlink" title="推导与理解"></a>推导与理解</h3><p>有关学习器权重$\alpha_t$和样本权重$D_t(x)$的推导由最小化指数损失函数得出。</p>
+<h4 id="其一：Why-exponential"><a href="#其一：Why-exponential" class="headerlink" title="其一：Why exponential?"></a>其一：Why exponential?</h4><p>指数损失函数如下所示：</p>
+<script type="math/tex; mode=display">
+loss = \sum_{i=1}^N e^{-y_i h(x_i)}</script><p>表达式很好解释，以分类器为例：分类正确时预测结果和标签同号，指数为负，损失较小；分类错误时预测结果和标签异号，损失较大。</p>
+<p>为何AdaBoost要使用指数损失？实际上这也是我最开始困扰的问题，至今也没有想明白，查阅了很多资料，都只是说明AdaBoost使用改损失作为优化对象，并未提及原因。</p>
+<p>Wikipedia上对指数损失的解释如下：</p>
+<blockquote>
+<p>The exponential loss is convex and grows exponentially for negative values which makes it more sensitive to outliers. The exponential loss is used in the AdaBoost algorithm.</p>
+</blockquote>
+<p>仅仅提到指数损失的凸性以及指数型增长对于异常值的敏感度高。我猜想是利用了指数函数对正常值的低敏感度和对异常值的高敏感度，实现算法描述的“关注做错的样本”，不知思路是否如此，这里就先记住吧…</p>
+<h4 id="其二：一些数学"><a href="#其二：一些数学" class="headerlink" title="其二：一些数学"></a>其二：一些数学</h4><p>下面正式推导$\alpha$和$D(x)$更新的表达式。</p>
+<p>总体思路像其他很多机器学习算法推导一样，依旧是最小化损失函数，AdaBoost采用指数损失。</p>
+<p>考虑到AdaBoost使用多个基学习器做线性组合，每个加了权重的基学习器都希望尽可能减少损失，那么不妨从第$t$轮迭代生成的带权重基学习器$\alpha_t h_t(x)$入手，其在整个训练集上的平均损失为：</p>
+<script type="math/tex; mode=display">
+loss = \frac{1}{N} \sum_{i=1}^N e^{-y_i\alpha_th_t(x_i)}</script><p>注意我们优化的是<strong>平均损失</strong>，有因子$\frac{1}{N}$，正因为是平均损失，后面才能引入错误率$\epsilon_t$。同样的，在原理上也可以解释：我们希望平均到每个样本的损失都尽可能小，而非总损失最小；同样的总损失，但却集中在某几个样本上可不是我们期望的目标。</p>
+<p>我们考虑二分类器的情况，标签与预测结果取值只有$\{+1, -1\}$，因此损失变为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+loss &= \frac{1}{N} \sum_{i=1}^N e^{-y_i\alpha_th_t(x_i)} \\
+&= \frac{n_{s}e^{-\alpha_t} + n_{d}e^{\alpha_t}}{N} \\
+&= \frac{n_s}{N} e^{-\alpha_t} + \frac{n_d}{N} e^{\alpha_t} \\
+&= (1-\epsilon_t) e^{-\alpha_t} + \epsilon_t e^{\alpha_t}
+\end{aligned}</script><p>其中$n_s$和$n_d$分别表示$N$个样本中被$h_t$分类正确和分类错误的样本个数，从而引入错误率$\epsilon$。</p>
+<p>然后对$\alpha_t$求导为零，得到$\alpha_t$，形式很简单：</p>
+<script type="math/tex; mode=display">
+\frac{\partial loss}{\partial \alpha_t} = (\epsilon_t - 1) e^{-\alpha_t} + \epsilon_t e^{\alpha_t} = 0 \\
+\alpha_t = \frac{1}{2} \ln{\frac{1-\epsilon_t}{\epsilon_t}}</script><p>至此推得每个基学习器的权重$\alpha_t$，它由当前基学习器错误率决定，本质上由基学习器的性能决定，即前文提到的“错误率低的基学习器占权重高”思想。</p>
+<p>样本权重$D_t(x)$的更新就好理解了。利用指数损失的敏感性，针对那些分类出错的样本，我们增加对它们的“关注”，即提高权重，对分类正确的样本减少权重，所以$D_t(x)$直接与损失函数相乘即可，外加一个归一化因子：</p>
+<script type="math/tex; mode=display">
+D_{t+1}(x_i) = \frac{1}{Z_t} D_t(x_i) e^{-y_i \alpha_t h_t(x_i)}</script><p>至此基本的二分类AdaBoost推导完成。对其做些修改可得多分类和回归任务中的改进算法，此处不表。</p>
+<h2 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h2><p>前文AdaBoost思想即Boosting（提升），在连续迭代中优化基学习器，最后将他们组合起来。</p>
+<p>告别AdaBoost，换一种方式思考集成学习，从独立性入手得到Bagging算法，它比AdaBoost好理解很多。</p>
+<p>Bagging的思想是对训练集做多组有放回的采样，从而得到多个子训练集，使用每个子训练集构建一个基学习器，最后得到一组基学习器。在预测时，对于分类任务按照“少数服从多数”决策，对回归任务则采用求平均值进行决策。</p>
+<p>此外，Bagging在确定子训练集的同时确定了未使用的样本，这些样本可用作验证集检验基学习器性能。</p>
+<h2 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h2><p>Random Forest即随机森林，属于一种Bagging算法，其将决策树和Bagging方法结合，加入了随机因素。</p>
+<p>传统决策树</p>
+
     </article>
     <!-- license  -->
     
@@ -445,7 +486,7 @@ Z_t = \sum_x D_t(x)e^{-\alpha_t h_t(x) y}</script><p>达到迭代上限，得到
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 13th 2019, 10:10:48 am</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 13th 2019, 12:02:16 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 13th 2019, 4:22:42 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -574,7 +615,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成学习"><span class="toc-number">1.</span> <span class="toc-text">集成学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AdaBoost"><span class="toc-number">2.</span> <span class="toc-text">AdaBoost</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法"><span class="toc-number">2.1.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推导"><span class="toc-number">2.2.</span> <span class="toc-text">推导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bagging"><span class="toc-number">3.</span> <span class="toc-text">Bagging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Forest"><span class="toc-number">4.</span> <span class="toc-text">Random Forest</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成学习"><span class="toc-number">1.</span> <span class="toc-text">集成学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AdaBoost"><span class="toc-number">2.</span> <span class="toc-text">AdaBoost</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法"><span class="toc-number">2.1.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推导与理解"><span class="toc-number">2.2.</span> <span class="toc-text">推导与理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其一：Why-exponential"><span class="toc-number">2.2.1.</span> <span class="toc-text">其一：Why exponential?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其二：一些数学"><span class="toc-number">2.2.2.</span> <span class="toc-text">其二：一些数学</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bagging"><span class="toc-number">3.</span> <span class="toc-text">Bagging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Forest"><span class="toc-number">4.</span> <span class="toc-text">Random Forest</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -587,44 +628,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1163,13 +1166,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
-        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
+        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
         <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
