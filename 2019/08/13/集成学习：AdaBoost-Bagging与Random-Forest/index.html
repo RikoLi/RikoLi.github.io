@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -468,7 +468,7 @@ loss &= \frac{1}{N} \sum_{i=1}^N e^{-y_i\alpha_th_t(x_i)} \\
 <p>然后对$\alpha_t$求导为零，得到$\alpha_t$，形式很简单：</p>
 <script type="math/tex; mode=display">
 \frac{\partial loss}{\partial \alpha_t} = (\epsilon_t - 1) e^{-\alpha_t} + \epsilon_t e^{\alpha_t} = 0 \\
-\alpha_t = \frac{1}{2} \ln{\frac{1-\epsilon_t}{\epsilon_t}}</script><p>至此推得每个基学习器的权重$\alpha_t$，它由当前基学习器错误率决定，本质上由基学习器的性能决定，即前文提到的“错误率低的基学习器占权重高”思想。</p>
+\alpha_t = \frac{1}{2} \ln{\left(\frac{1-\epsilon_t}{\epsilon_t}\right)}</script><p>至此推得每个基学习器的权重$\alpha_t$，它由当前基学习器错误率决定，本质上由基学习器的性能决定，即前文提到的“错误率低的基学习器占权重高”思想。</p>
 <p>样本权重$D_t(x)$的更新就好理解了。利用指数损失的敏感性，针对那些分类出错的样本，我们增加对它们的“关注”，即提高权重，对分类正确的样本减少权重，所以$D_t(x)$直接与损失函数相乘即可，外加一个归一化因子：</p>
 <script type="math/tex; mode=display">
 D_{t+1}(x_i) = \frac{1}{Z_t} D_t(x_i) e^{-y_i \alpha_t h_t(x_i)}</script><p>至此基本的二分类AdaBoost推导完成。对其做些修改可得多分类和回归任务中的改进算法，此处不表。</p>
@@ -476,8 +476,8 @@ D_{t+1}(x_i) = \frac{1}{Z_t} D_t(x_i) e^{-y_i \alpha_t h_t(x_i)}</script><p>至�
 <p>告别AdaBoost，换一种方式思考集成学习，从独立性入手得到Bagging算法，它比AdaBoost好理解很多。</p>
 <p>Bagging的思想是对训练集做多组有放回的采样，从而得到多个子训练集，使用每个子训练集构建一个基学习器，最后得到一组基学习器。在预测时，对于分类任务按照“少数服从多数”决策，对回归任务则采用求平均值进行决策。</p>
 <p>此外，Bagging在确定子训练集的同时确定了未使用的样本，这些样本可用作验证集检验基学习器性能。</p>
-<h2 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h2><p>Random Forest即随机森林，属于一种Bagging算法，其将决策树和Bagging方法结合，加入了随机因素。</p>
-<p>传统决策树</p>
+<h3 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h3><p>Random Forest即随机森林，属于一种Bagging算法，其将决策树和Bagging方法结合，加入了随机因素。</p>
+<p>传统决策树在每个分支节点计算所有属性的信息增益进行分支，随机森林则随机选取一个所有属性的子集，用子集计算信息增益进行分支。通过该方法构建一系列决策树，然后进行决策，即随机森林算法。</p>
 
     </article>
     <!-- license  -->
@@ -486,7 +486,7 @@ D_{t+1}(x_i) = \frac{1}{Z_t} D_t(x_i) e^{-y_i \alpha_t h_t(x_i)}</script><p>至�
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 13th 2019, 10:10:48 am</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 13th 2019, 4:22:42 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 14th 2019, 10:26:02 am</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -615,7 +615,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成学习"><span class="toc-number">1.</span> <span class="toc-text">集成学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AdaBoost"><span class="toc-number">2.</span> <span class="toc-text">AdaBoost</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法"><span class="toc-number">2.1.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推导与理解"><span class="toc-number">2.2.</span> <span class="toc-text">推导与理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其一：Why-exponential"><span class="toc-number">2.2.1.</span> <span class="toc-text">其一：Why exponential?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其二：一些数学"><span class="toc-number">2.2.2.</span> <span class="toc-text">其二：一些数学</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bagging"><span class="toc-number">3.</span> <span class="toc-text">Bagging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Forest"><span class="toc-number">4.</span> <span class="toc-text">Random Forest</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成学习"><span class="toc-number">1.</span> <span class="toc-text">集成学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AdaBoost"><span class="toc-number">2.</span> <span class="toc-text">AdaBoost</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法"><span class="toc-number">2.1.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推导与理解"><span class="toc-number">2.2.</span> <span class="toc-text">推导与理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其一：Why-exponential"><span class="toc-number">2.2.1.</span> <span class="toc-text">其一：Why exponential?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其二：一些数学"><span class="toc-number">2.2.2.</span> <span class="toc-text">其二：一些数学</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bagging"><span class="toc-number">3.</span> <span class="toc-text">Bagging</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Random-Forest"><span class="toc-number">3.1.</span> <span class="toc-text">Random Forest</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -628,6 +628,34 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1166,13 +1194,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
-    
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
         <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
         <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
