@@ -457,13 +457,13 @@ loss = \sum_{i=1}^N e^{-y_i h(x_i)}</script><p>表达式很好解释，以分类
 <p>总体思路像其他很多机器学习算法推导一样，依旧是最小化损失函数，AdaBoost采用指数损失。</p>
 <p>考虑到AdaBoost使用多个基学习器做线性组合，每个加了权重的基学习器都希望尽可能减少损失，那么不妨从第$t$轮迭代生成的带权重基学习器$\alpha_t h_t(x)$入手，其在整个训练集上的平均损失为：</p>
 <script type="math/tex; mode=display">
-loss = \frac{1}{N} \sum_{i=1}^N e^{-y_i\alpha_th_t(x_i)}</script><p>注意我们优化的是<strong>平均损失</strong>，有因子$\frac{1}{N}$，正因为是平均损失，后面才能引入错误率$\epsilon_t$。同样的，在原理上也可以解释：我们希望平均到每个样本的损失都尽可能小，而非总损失最小；同样的总损失，但却集中在某几个样本上可不是我们期望的目标。</p>
-<p>我们考虑二分类器的情况，标签与预测结果取值只有$\{+1, -1\}$，因此损失变为：</p>
+loss = \mathbb{E}_{x\sim D_t} \left[e^{-y\alpha_th_t(x)}\right]</script><p>AdaBoost使用了期望损失，考虑了分类正确和分类错误样本的权重对于损失的影响，这也反映了“关注做错样本”的设计思想。</p>
+<p>我们考虑二分类器的情况，标签与预测结果取值只有$\{+1, -1\}$，将上式展开，自然得到错误率$\epsilon_t$的引入：</p>
 <script type="math/tex; mode=display">\begin{aligned}
-loss &= \frac{1}{N} \sum_{i=1}^N e^{-y_i\alpha_th_t(x_i)} \\
-&= \frac{n_{s}e^{-\alpha_t} + n_{d}e^{\alpha_t}}{N} \\
-&= \frac{n_s}{N} e^{-\alpha_t} + \frac{n_d}{N} e^{\alpha_t} \\
-&= (1-\epsilon_t) e^{-\alpha_t} + \epsilon_t e^{\alpha_t}
+loss &= \mathbb{E}_{x\sim D_t} \left[e^{-y\alpha_th_t(x)}\right] \\
+&= \sum_i p(x_i) e^{-y_i\alpha_th_t(x_i)} \\
+&= \frac{n_s}{N}e^{-\alpha_t} + \frac{n_d}{N}e^{\alpha_t} \\
+&= (1-\epsilon_t)e^{-\alpha_t} + \epsilon_t e^{\alpha_t}
 \end{aligned}</script><p>其中$n_s$和$n_d$分别表示$N$个样本中被$h_t$分类正确和分类错误的样本个数，从而引入错误率$\epsilon$。</p>
 <p>然后对$\alpha_t$求导为零，得到$\alpha_t$，形式很简单：</p>
 <script type="math/tex; mode=display">
@@ -486,7 +486,7 @@ D_{t+1}(x_i) = \frac{1}{Z_t} D_t(x_i) e^{-y_i \alpha_t h_t(x_i)}</script><p>至�
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 13th 2019, 10:10:48 am</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">August 14th 2019, 10:26:02 am</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">September 6th 2019, 2:07:13 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -628,22 +628,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1180,21 +1164,21 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
-    
         <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
         <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
-        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
