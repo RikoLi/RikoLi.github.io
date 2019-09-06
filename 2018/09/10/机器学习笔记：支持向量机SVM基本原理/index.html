@@ -418,9 +418,9 @@ height:50vh;
 <li>它距离它所划分的两类训练样本中的支持向量尽可能远</li>
 </ul>
 <p>于是我们可以得出关于超平面的约束如下，首先要满足是个平面，一般我们称其为“决策边界”(Decision Boundary)：</p>
-<script type="math/tex; mode=display">DB: \bold{w}^T\bold{x} + b = 0</script><p>上式中，$\bold{w}$为权重向量（SVM中我们要优化的目标），$\bold{x}$为训练样本的输入向量，b为偏差值。满足上式描述的输入向量$\bold{x}$全部存在于以$\bold{w}$为唯一参数决定的超平面上。</p>
+<script type="math/tex; mode=display">DB: \mathbf{w}^T\mathbf{x} + b = 0</script><p>上式中，$\mathbf{w}$为权重向量（SVM中我们要优化的目标），$\mathbf{x}$为训练样本的输入向量，b为偏差值。满足上式描述的输入向量$\mathbf{x}$全部存在于以$\mathbf{w}$为唯一参数决定的超平面上。</p>
 <p>我们要衡量训练样本到超平面的距离，使用点到超平面距离公式描述任意一个训练样本（我们使用编号i表示这个样本）到超平面的距离：</p>
-<script type="math/tex; mode=display">d_i = \frac{|\bold{w}^T\bold{x}_i+b|}{||\bold{w}||}</script><p>注意上式中$\bold{x}_i$表示第i个训练样本的输入向量。</p>
+<script type="math/tex; mode=display">d_i = \frac{|\mathbf{w}^T\mathbf{x}_i+b|}{||\mathbf{w}||}</script><p>注意上式中$\mathbf{x}_i$表示第i个训练样本的输入向量。</p>
 <h2 id="间隔和最大间隔假设"><a href="#间隔和最大间隔假设" class="headerlink" title="间隔和最大间隔假设"></a>间隔和最大间隔假设</h2><p>要继续推导SVM的原理，还要明确两个概念：间隔和最大间隔假设。</p>
 <p>上文提到，决策边界要离支持向量尽可能远，且两类的支持向量距离决策边界距离相等，这说明被分类的两类支持向量分别存在于两个平行于决策边界的超平面上，它们距决策边界的距离相同。于是，决策边界和两个由支持向量构成的超平面划分出了一个不存在训练样本的区域，这个区域的大小称为“间隔”（Margin），我们用$\gamma$表示它。</p>
 <p>由于决策边界和两个支持向量超平面距离相同，确定一个支持向量超平面距离决策边界的距离乘以二即可得到$\gamma$。可是，根据不同的训练样本情况，一个支持向量超平面和决策边界的距离似乎可以是任意实数c，这为$\gamma$的确定引入了新的未知量c。</p>
@@ -430,64 +430,64 @@ height:50vh;
 </blockquote>
 <p>c取1，也就是说我们确定了两个由支持向量确定的超平面，它们刻画了训练样本的正确分类：</p>
 <script type="math/tex; mode=display">\begin{cases}
-\bold{w}^T\bold{x}_+ + b \ge 1,\space{} y_+ = 1 \\
-\bold{w}^T\bold{x}_- + b \le 1,\space{} y_- = -1
+\mathbf{w}^T\mathbf{x}_+ + b \ge 1,\space{} y_+ = 1 \\
+\mathbf{w}^T\mathbf{x}_- + b \le 1,\space{} y_- = -1
 \end{cases}</script><p>上式中，训练样本分为正类和负类，正确分类时，正类结果为1，负类结果为-1，支持向量所在平面即为取等号是对应的两个超平面。上式即为“最大间隔假设”。</p>
 <p>还记得我们最开始的目的吗？让决策边界离训练样本尽可能远，现在我们有了$\gamma$来衡量“远近”，因此我们目的就是使$\gamma$尽可能大。上文提到了点到超平面距离，我们将其用在支持向量上，于是我们得到间隔的表达式：</p>
-<script type="math/tex; mode=display">\gamma = \frac{2}{||\bold{w}||}</script><p>可喜可贺，至此我们已经得到了要优化的表达式了！</p>
+<script type="math/tex; mode=display">\gamma = \frac{2}{||\mathbf{w}||}</script><p>可喜可贺，至此我们已经得到了要优化的表达式了！</p>
 <h1 id="如何优化-gamma"><a href="#如何优化-gamma" class="headerlink" title="如何优化$\gamma$"></a>如何优化$\gamma$</h1><p>SVM的构建至此已经基本完成，剩下的就是数学上的处理了。</p>
 <p>整理一下我们推导出的结论，我们目前要做的是：</p>
-<script type="math/tex; mode=display">\begin{gathered}\max_{\bold{w}, b} \frac{2}{||\bold{w}||} \\
-s.t.\space{} y_i(\bold{w}^T\bold{x}_i+b) \ge 1, \space{} i = 1,2,...n
+<script type="math/tex; mode=display">\begin{gathered}\max_{\mathbf{w}, b} \frac{2}{||\mathbf{w}||} \\
+s.t.\space{} y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1, \space{} i = 1,2,...n
 \end{gathered}</script><p>其中，第二个式子是最大间隔假设的两个式子的合在一起写的形式。下标i表示第i个样本，我们假设一共n个样本，因此一共有n条限制条件，其含义为全部n个样本全部被正确分类。</p>
 <p>很明显，我们需要尽量使第一个式子的分母小，为了优化方便，我们考虑优化下面等价的式子，<strong>SVM的本质就是这两个式子：</strong></p>
-<script type="math/tex; mode=display">\begin{gathered}\min_{\bold{w}, b} \frac{1}{2} ||\bold{w}||^2 \\
-s.t.\space{}y_i(\bold{w}^T\bold{x}_i+b) \ge 1, \space{} i = 1,2,...n
+<script type="math/tex; mode=display">\begin{gathered}\min_{\mathbf{w}, b} \frac{1}{2} ||\mathbf{w}||^2 \\
+s.t.\space{}y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1, \space{} i = 1,2,...n
 \end{gathered}</script><p>怎么优化呢？乍一看，这是个凸二次规划问题，是有固定解法的，不过对于SVM还有更高效的解法。对于所有约束条件优化问题，我们可以使用SMO算法进行优化<sup><a href="#fn_3" id="reffn_3">3</a></sup>，这点让我们当做这篇文章的题外话吧。</p>
 <blockquote id="fn_3">
 <sup>3</sup>. 使用SMO进行优化可以参考<a href="https://www.cnblogs.com/pinard/p/6111471.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6111471.html</a><a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
 </blockquote>
 <h2 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h2><p>上述待优化的问题可以转换成对偶问题求解，使原函数尽可能小的对偶问题是使得对偶的函数（拉格朗日函数）尽可能大。构建拉格朗日函数：</p>
-<script type="math/tex; mode=display">L(\bold{w}, b, \bold{\alpha}) = \frac{1}{2} ||\bold{w}||^2 + \sum_{i=1}^{n}\alpha_i(1-y_i(\bold{w}^T\bold{x}_i+b))</script><p>将$L$对$\bold{w}$和$b$求偏导数，并令偏导数等于零，对于每一个分量：</p>
+<script type="math/tex; mode=display">L(\mathbf{w}, b, \mathbf{\alpha}) = \frac{1}{2} ||\mathbf{w}||^2 + \sum_{i=1}^{n}\alpha_i(1-y_i(\mathbf{w}^T\mathbf{x}_i+b))</script><p>将$L$对$\mathbf{w}$和$b$求偏导数，并令偏导数等于零，对于每一个分量：</p>
 <script type="math/tex; mode=display">\begin{aligned}
 \frac{\partial{L}}{\partial{w_j}} &= w_j - \alpha_iy_ix_i^{(j)} = 0 \\
 \frac{\partial{L}}{\partial{b}} &= \alpha_iy_i = 0
 \end{aligned}</script><p>写成向量表示：</p>
 <script type="math/tex; mode=display">\begin{aligned}
-\bold{w} &= \sum_{i=1}^n\alpha_iy_i\bold{x}_i \\
+\mathbf{w} &= \sum_{i=1}^n\alpha_iy_i\mathbf{x}_i \\
 0 &= \sum_{i=1}^n\alpha_iy_i
-\end{aligned}</script><p>将上述两式代回$L$，消去$\bold{w}$和$b$，得到：</p>
-<script type="math/tex; mode=display">L = \sum_{i=1}^n\alpha_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\alpha_i\alpha_jy_iy_j\bold{x}_i^T\bold{x}_j, \space{} \alpha_i \ge 0</script><p>接下来我们要做的就是求使得$L$最大化的$\bold{\alpha_i}$，进而可得$\bold{w}$和$b$，此处就用到参考中的SMO算法。</p>
+\end{aligned}</script><p>将上述两式代回$L$，消去$\mathbf{w}$和$b$，得到：</p>
+<script type="math/tex; mode=display">L = \sum_{i=1}^n\alpha_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\alpha_i\alpha_jy_iy_j\mathbf{x}_i^T\mathbf{x}_j, \space{} \alpha_i \ge 0</script><p>接下来我们要做的就是求使得$L$最大化的$\mathbf{\alpha_i}$，进而可得$\mathbf{w}$和$b$，此处就用到参考中的SMO算法。</p>
 <h1 id="再进一步"><a href="#再进一步" class="headerlink" title="再进一步"></a>再进一步</h1><p>我们已经推导得出基本的线性可分二分类硬间隔SVM的数学表达了，接下来我们来看看怎么让这个模型更加贴近实用，我们还需要补充一些内容。</p>
 <h2 id="核函数（Kernel-Function）"><a href="#核函数（Kernel-Function）" class="headerlink" title="核函数（Kernel Function）"></a>核函数（Kernel Function）</h2><p>核函数的引入帮助我们将SVM从只支持线性可分拓展到支持线性不可分。</p>
-<p>对非线性可分问题，我们将原特征空间中线性不可分的样本点通过某类映射$\phi(\cdot)$映射到高维特征空间中，在这个特征空间中它们是线性可分的。之前的推导中需要计算特征向量的内积$\bold{x}_i^T\bold{x}_j$，经过映射后对应高维特征向量也需要计算内积$\phi(\bold{x}_i)^T\phi(\bold{x}_j)$，可是因为向量维数增多，直接计算高维向量内积很困难，于是我们构想一个函数$\kappa(\cdot, \cdot)$使其<strong>能在原始特征空间中使用原始特征向量直接计算高维特征向量内积的结果</strong>，即$\kappa(\bold x_i, \bold x_j) = \phi(\bold{x}_i)^T\phi(\bold{x}_j)$这种函数$\kappa$称作<strong>核函数</strong>，是一种隐式映射，起到升维的作用。</p>
+<p>对非线性可分问题，我们将原特征空间中线性不可分的样本点通过某类映射$\phi(\cdot)$映射到高维特征空间中，在这个特征空间中它们是线性可分的。之前的推导中需要计算特征向量的内积$\mathbf{x}_i^T\mathbf{x}_j$，经过映射后对应高维特征向量也需要计算内积$\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)$，可是因为向量维数增多，直接计算高维向量内积很困难，于是我们构想一个函数$\kappa(\cdot, \cdot)$使其<strong>能在原始特征空间中使用原始特征向量直接计算高维特征向量内积的结果</strong>，即$\kappa(\mathbf x_i, \mathbf x_j) = \phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)$这种函数$\kappa$称作<strong>核函数</strong>，是一种隐式映射，起到升维的作用。</p>
 <p>将核函数加入到SVM表达式中，得到：</p>
 <script type="math/tex; mode=display">
-L = \sum_{i=1}^n\alpha_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\alpha_i\alpha_jy_iy_j \kappa\left(\bold x_i, \bold x_j \right), \space{} \alpha_i \ge 0</script><p>同样用SMO去求$\alpha_i$即可。</p>
-<h3 id="哪些函数可以作核函数？"><a href="#哪些函数可以作核函数？" class="headerlink" title="哪些函数可以作核函数？"></a>哪些函数可以作核函数？</h3><p>核函数种类有很多，可以用作核函数的映射需要遵循一定的性质：核矩阵半正定。核矩阵定义在训练样本集合$\bold D = \{\bold x_1, \bold x_2, \dots, \bold x_m\}$上，即：</p>
+L = \sum_{i=1}^n\alpha_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\alpha_i\alpha_jy_iy_j \kappa\left(\mathbf x_i, \mathbf x_j \right), \space{} \alpha_i \ge 0</script><p>同样用SMO去求$\alpha_i$即可。</p>
+<h3 id="哪些函数可以作核函数？"><a href="#哪些函数可以作核函数？" class="headerlink" title="哪些函数可以作核函数？"></a>哪些函数可以作核函数？</h3><p>核函数种类有很多，可以用作核函数的映射需要遵循一定的性质：核矩阵半正定。核矩阵定义在训练样本集合$\mathbf D = \{\mathbf x_1, \mathbf x_2, \dots, \mathbf x_m\}$上，即：</p>
 <script type="math/tex; mode=display">
-\bold D = \begin{bmatrix}
-\kappa(\bold x_1, \bold x_1) & \cdots & \kappa(\bold x_1, \bold x_m) \\
+\mathbf D = \begin{bmatrix}
+\kappa(\mathbf x_1, \mathbf x_1) & \cdots & \kappa(\mathbf x_1, \mathbf x_m) \\
 \vdots & \ddots & \vdots \\
-\kappa(\bold x_m, \bold x_1) & \cdots & \kappa(\bold x_m, \bold x_m)
+\kappa(\mathbf x_m, \mathbf x_1) & \cdots & \kappa(\mathbf x_m, \mathbf x_m)
 \end{bmatrix}</script><p>上述矩阵半正定。同时还要求$\kappa$满足对称性，即：</p>
 <script type="math/tex; mode=display">
-\kappa(\bold x_i, \bold x_j) = \kappa(\bold x_j, \bold x_i)</script><p>举几个例子：</p>
+\kappa(\mathbf x_i, \mathbf x_j) = \kappa(\mathbf x_j, \mathbf x_i)</script><p>举几个例子：</p>
 <ul>
-<li>高斯核：$\kappa(\bold x, \bold y) = \exp{\left(-\frac{||\bold x - \bold y||^2}{2\sigma^2}\right)}$，$\sigma&gt;0$，称带宽（非叫方差也无所谓，反正表示一个范围的大小）</li>
-<li>多项式核：$\kappa(\bold x, \bold y) = \left(\bold x^T \bold y\right)^d$， $d$为多项式次数</li>
+<li>高斯核：$\kappa(\mathbf x, \mathbf y) = \exp{\left(-\frac{||\mathbf x - \mathbf y||^2}{2\sigma^2}\right)}$，$\sigma&gt;0$，称带宽（非叫方差也无所谓，反正表示一个范围的大小）</li>
+<li>多项式核：$\kappa(\mathbf x, \mathbf y) = \left(\mathbf x^T \mathbf y\right)^d$， $d$为多项式次数</li>
 </ul>
 <h2 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h2><p>核函数似乎已经解决了线性不可分问题，实际上在真实环境下，只用核函数可能会导致过拟合的问题，因此我们要向SVM中加入正则项进行泛化，这样才能尽可能表达数据的真实分布情况，而非仅拟合出学习样本数据的分布，这种思想下SVM的决策平面称为<strong>软间隔</strong>。</p>
 <p>“软间隔”正则化可以被我们表示为不满足SVM约束条件：</p>
 <script type="math/tex; mode=display">
-y_i(\bold{w}^T\bold{x}_i+b) \ge 1</script><p>于是我们将优化目标修改为：</p>
+y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1</script><p>于是我们将优化目标修改为：</p>
 <script type="math/tex; mode=display">
-\min_{\bold{w},b}\frac{1}{2}||\bold{w}||^2+C\sum_{i=1}^nloss(y_i(\bold{w}^T\bold{x}_i+b)-1)</script><p>$C &gt; 0$，在这里是一个超参数，用来调节软间隔添加的强度。</p>
+\min_{\mathbf{w},b}\frac{1}{2}||\mathbf{w}||^2+C\sum_{i=1}^nloss(y_i(\mathbf{w}^T\mathbf{x}_i+b)-1)</script><p>$C &gt; 0$，在这里是一个超参数，用来调节软间隔添加的强度。</p>
 <p>我们使用$loss(\cdot)$决定“错误”判断的样本点，根据这个函数的不同选择，我们可以得到不同的SVM。使用对率损失函数$l_{log}=log(1+e^{-z})$可以得到多分类SVM的雏形。如果只考虑二分类，更多使用hinge损失函数$l_{hinge}=\max{(0, 1-z)}$。</p>
 <p>使用hinge损失函数的情况中，我们一般将损失函数的每一项记作<strong>松弛变量</strong>$\xi_i$，因此优化目标写为：</p>
 <script type="math/tex; mode=display">
-\min_{\bold{w},b}\frac{1}{2}||\bold{w}||^2+C\sum_{i=1}^n\xi_i</script><script type="math/tex; mode=display">
-\xi_i = \max{\left(0, 1-y_i(\bold{w}^T\bold{x}_i+b)\right )}</script><p>接下来和前面的推导一样，转换为对偶问题求参数即可。</p>
+\min_{\mathbf{w},b}\frac{1}{2}||\mathbf{w}||^2+C\sum_{i=1}^n\xi_i</script><script type="math/tex; mode=display">
+\xi_i = \max{\left(0, 1-y_i(\mathbf{w}^T\mathbf{x}_i+b)\right )}</script><p>接下来和前面的推导一样，转换为对偶问题求参数即可。</p>
 
     </article>
     <!-- license  -->
@@ -496,7 +496,7 @@ y_i(\bold{w}^T\bold{x}_i+b) \ge 1</script><p>于是我们将优化目标修改�
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">September 10th 2018, 11:52:59 pm</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">September 6th 2019, 1:43:37 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">September 6th 2019, 2:37:04 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -643,6 +643,32 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1179,9 +1205,9 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
-    
         <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
+    
+        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
     
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
