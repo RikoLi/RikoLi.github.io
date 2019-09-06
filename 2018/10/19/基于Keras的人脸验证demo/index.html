@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">592</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">34</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,28 +403,7 @@ height:50vh;
     <article class="article-entry">
         <p>这个demo是学校课程的期末project，在此做个传送门直接链接到GitHub仓库。</p>
 <p>传送门：<a href="https://github.com/RikoLi/ML_project_3_Face_Verification" target="_blank" rel="noopener">https://github.com/RikoLi/ML_project_3_Face_Verification</a></p>
-<a id="more"></a>
-<h1 id="数据集说明"><a href="#数据集说明" class="headerlink" title="数据集说明"></a>数据集说明</h1><p>使用CASIA WebFace名人脸图数据集，共10575类（使用时修改为10574类），数据集自带训练集、验证集的索引文件。</p>
-<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><ul>
-<li>操作系统：CentOS Linux release 7.5.1804 (Core)</li>
-<li>框架：Keras 2.2.2</li>
-<li>GPU：NVIDIA Tesla K40m</li>
-</ul>
-<p>感谢ZJUSPC提供硬件支持！<del>ut鸽鸽大好き！</del></p>
-<h1 id="模型说明"><a href="#模型说明" class="headerlink" title="模型说明"></a>模型说明</h1><h2 id="前期模型"><a href="#前期模型" class="headerlink" title="前期模型"></a>前期模型</h2><p>早期参考了DeepID网络结构，对DeepID v1结构增加了更多的卷积层与卷积channel数量，增加了DeepID层的神经元个数。</p>
-<p><img src="classical_DeepID.png" alt="deepid"></p>
-<p>独特结构在于使用DeepID全连接层表示提取出的人脸特征，DeepID层与最后一个卷积层和上一个最大池化层进行全连接。</p>
-<p>参考文献中指出早期的DeepID v1模型作为分类器进行训练的最高准确率在40%~60%间为正常结果，我使用修改之后的DeepID训练14小时后获得的验证集上准确率为50.75%。</p>
-<h2 id="后期模型"><a href="#后期模型" class="headerlink" title="后期模型"></a>后期模型</h2><h3 id="VGG风格"><a href="#VGG风格" class="headerlink" title="VGG风格"></a>VGG风格</h3><p>课程结束后，我希望使用传统结构VGG测试一下VGG在该数据集上的表现能力。于是以VGG16为蓝本，考虑到显存大小减少了一些待学习参数的规模。此外加入了大量的BN层，在每次最大池化后加入Dropout层。</p>
-<p><img src="vgg.png" alt="vgg"></p>
-<p>事实发现VGG的效果并不好，将近140个epoch只获得了20%~25%的验证集准确率，而且波动非常大。</p>
-<p><img src="train_curve.png" alt="train_curve"></p>
-<h3 id="Inception"><a href="#Inception" class="headerlink" title="Inception"></a>Inception</h3><p>使用Google提出的Inception结构进行尝试，结构图如下：</p>
-<p><img src="inception.png" alt="inception"></p>
-<p>使用了Inception的Block架构，一条支路用连续的两个3×3卷积核代替5×5卷积核，减少参数量。此外增加了大量的BN层用于对非线性激活函数之后的feature map进行标准化，在Block之间加入了Dropout层进行正则化处理。</p>
-<h1 id="特征相似性比较"><a href="#特征相似性比较" class="headerlink" title="特征相似性比较"></a>特征相似性比较</h1><p>使用训练好的模型进行特征抽取，得到全连接层的输出，使用一些距离测度进行相似性分析。</p>
-<h2 id="Euclidean距离"><a href="#Euclidean距离" class="headerlink" title="Euclidean距离"></a>Euclidean距离</h2><script type="math/tex; mode=display">||\bold{x}||_2 = \sqrt{\sum_{i=1}^N {x_i}^2}</script><p>即欧几里得距离，向量L2范数。向量$\bold{x}$为进行相似度判断的两个特征向量的差向量（对应元素做差）。</p>
-<h2 id="余弦距离"><a href="#余弦距离" class="headerlink" title="余弦距离"></a>余弦距离</h2>
+
     </article>
     <!-- license  -->
     
@@ -432,7 +411,7 @@ height:50vh;
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/">http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/">October 19th 2018, 9:33:03 pm</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/">April 2nd 2019, 5:55:12 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2018/10/19/基于Keras的人脸验证demo/">September 6th 2019, 11:47:59 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -566,7 +545,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据集说明"><span class="toc-number">1.</span> <span class="toc-text">数据集说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行环境"><span class="toc-number">2.</span> <span class="toc-text">运行环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模型说明"><span class="toc-number">3.</span> <span class="toc-text">模型说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前期模型"><span class="toc-number">3.1.</span> <span class="toc-text">前期模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后期模型"><span class="toc-number">3.2.</span> <span class="toc-text">后期模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VGG风格"><span class="toc-number">3.2.1.</span> <span class="toc-text">VGG风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inception"><span class="toc-number">3.2.2.</span> <span class="toc-text">Inception</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#特征相似性比较"><span class="toc-number">4.</span> <span class="toc-text">特征相似性比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Euclidean距离"><span class="toc-number">4.1.</span> <span class="toc-text">Euclidean距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#余弦距离"><span class="toc-number">4.2.</span> <span class="toc-text">余弦距离</span></a></li></ol></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -579,10 +558,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
     
     
     
@@ -1151,17 +1126,17 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
-    
         <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
-    
-        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
-        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
+        <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
         <span class="sidebar-tag-name" data-tags="支持向量机"><span class="iconfont-archer">&#xe606;</span>支持向量机</span>
+    
+        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
         <span class="sidebar-tag-name" data-tags="互联网"><span class="iconfont-archer">&#xe606;</span>互联网</span>
     
