@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">641</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,7 +403,7 @@ height:50vh;
     <article class="article-entry">
         <p>数据结构基础学习笔记。</p>
 <p>参考书目：<em>Data Structures and Algorithm Analysis in C, 2nd edition, Mark Allen Weiss</em><br><a id="more"></a></p>
-<h2 id="表、栈与队列"><a href="#表、栈与队列" class="headerlink" title="表、栈与队列"></a>表、栈与队列</h2><h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><p>表是一种线性数据结构，描述元素间的先后关系，每个元素拥有唯一的上一个相关元素和下一个相关元素。它是基础的数据结构，可以用来实现后面的栈与队列。</p>
+<h1 id="表、栈与队列"><a href="#表、栈与队列" class="headerlink" title="表、栈与队列"></a>表、栈与队列</h1><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><p>表是一种线性数据结构，描述元素间的先后关系，每个元素拥有唯一的上一个相关元素和下一个相关元素。它是基础的数据结构，可以用来实现后面的栈与队列。</p>
 <p>一个表涉及到的操作应有：</p>
 <ul>
 <li>新建空表init</li>
@@ -414,14 +414,64 @@ height:50vh;
 <p>我们可以使用数组来实现一个表，但是通常不这样做。对于C来说，数组初始化需要已知数组大小，若不清楚则需要留出足够大的空间，这是对存储空间的浪费；此外在进行插入和删除工作时较为麻烦：需要将指定位置之后的全部元素后移或前移一个位置。</p>
 <p>使用链表进行表结构的描述是合适的，其主要特点是使用非连续内存空间进行表的保存，在插入/删除新节点时不必移动其他节点位置，并实现了动态特性，使表的大小可以动态调整。</p>
 <p>链表节点可以描述如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    ContentType content; // Any content you want ...</span><br><span class="line">    struct Node *next;  // Pointer to next node</span><br><span class="line">&#125; Node;</span><br></pre></td></tr></table></figure>
-<h4 id="关于表头"><a href="#关于表头" class="headerlink" title="关于表头"></a>关于表头</h4><p>表头是一种结构上的设计，对数据本身没有含义。表头的使用使得一些操作（如涉及到改变一个节点位置的操作）更加方便，是否使用根据使用者的喜好而定。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    ParamType param; <span class="comment">// Any parameter you want ...</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span>  <span class="comment">// Pointer to next node</span></span><br><span class="line">&#125; Node;</span><br></pre></td></tr></table></figure>
+<h3 id="关于表头"><a href="#关于表头" class="headerlink" title="关于表头"></a>关于表头</h3><p>表头是一种结构上的设计，对数据本身没有含义。表头的使用使得一些操作（如涉及到改变一个节点位置的操作）更加方便，是否使用根据使用者的喜好而定。</p>
 <p>我认为还是使用表头为好。一个表起始于表头节点，终止于空地址NULL，有始有终，结构清晰。</p>
-<h4 id="插入-删除操作需要注意的"><a href="#插入-删除操作需要注意的" class="headerlink" title="插入/删除操作需要注意的"></a>插入/删除操作需要注意的</h4><p>插入操作时需要注意先让新节点指向它的下一个节点，在将前一个节点指向它，否则链表会中断。</p>
+<h3 id="插入-删除操作需要注意的"><a href="#插入-删除操作需要注意的" class="headerlink" title="插入/删除操作需要注意的"></a>插入/删除操作需要注意的</h3><p>插入操作时需要注意先让新节点指向它的下一个节点，在将前一个节点指向它，否则链表会中断。</p>
 <p>类似的，删除时先将被删除节点的前一个节点连接到其后一个节点，再释放到被删除节点的内存。</p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p><strong>更多样式的表！</strong><br>表的结构不限于传统单向结构，可以向节点中增加指向前一个节点的指针构造双向链表；可以向末节点增加指向头节点的指针构造循环链表；可以使用多重表构造二维结构等等…</p>
-<p><strong>桶排序&amp;基数排序</strong><br>to be continued…</p>
-
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="更多样式的表"><a href="#更多样式的表" class="headerlink" title="更多样式的表"></a>更多样式的表</h4><p>表的结构不限于传统单向结构，可以向节点中增加指向前一个节点的指针构造双向链表；可以向末节点增加指向头节点的指针构造循环链表；可以使用多重表构造二维结构等等…</p>
+<h4 id="桶排序-amp-基数排序"><a href="#桶排序-amp-基数排序" class="headerlink" title="桶排序&amp;基数排序"></a>桶排序&amp;基数排序</h4><p>桶排序是一种简单的整数排序方式，需要已知整数范围。假设有$N$个整数，范围从$0~M-1$，顺序任意，桶排序过程如下：</p>
+<ol>
+<li>建立$M$个“桶”，如长度为$M$的数组<code>bucket</code></li>
+<li>遍历$N$个整数，将整数$i$送入对应的“桶”<code>bucket[i]</code></li>
+<li>遍历<code>bucket</code>得到的就是有序的$N$个整数</li>
+</ol>
+<p>应用中如果$M$范围较大，新建$M$个桶是浪费的，可以每次以一位进行桶排序，直到所有位都完成，这就是基数排序。如，对十进制整数，可以以10为基数，依次对个、十、百、千…数位进行桶排序。</p>
+<p>基数排序的实现过程中可以使用链表。这是因为对每位进行桶排序的时候，每个桶里可能不只有一个数，此时需要按照入桶的先后顺序以链表组织一个桶里的所有数。</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>栈是LIFO类型的结构，可用来实现一些依赖中间结果的数据调度工作。对于一个栈可以进行的操作为：</p>
+<ul>
+<li>pop操作：弹出栈顶元素</li>
+<li>push操作：将新元素压入栈</li>
+</ul>
+<p>栈可以通过数组或链表来实现。</p>
+<h3 id="用数组实现栈"><a href="#用数组实现栈" class="headerlink" title="用数组实现栈"></a>用数组实现栈</h3><p>先来说数组实现。我们需要一个变量<code>top</code>来指示栈顶位置，即对应数组单元的序号。</p>
+<ul>
+<li>初始化：新建数组<code>stack</code>，<code>top</code>置为-1</li>
+<li>入栈：<code>stack[++top] = new_element</code></li>
+<li>出栈：<code>return stack[top--]</code></li>
+</ul>
+<p>数组实现栈的时候要规定最大栈容量防止溢出。</p>
+<h3 id="用链表实现栈"><a href="#用链表实现栈" class="headerlink" title="用链表实现栈"></a>用链表实现栈</h3><p>用链表实现栈不用考虑初始化最大栈容量。入栈只需在链表尾部增加一个节点，出栈则返回链表尾部节点值后将其内存释放。</p>
+<p>链表实现栈不需要规定最大栈容量并不意味着栈可以一直大下去。当内存空间耗尽无法再分配新节点空间时会出现错误。当然在设计合理的情况下一般也不会出现这种情况。</p>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p>栈可以实现简单的计算器。假设我们有一个表达式<code>3 + 5 * 2 - 8 / 4</code>，如何在符合运算优先级的情况下计算正确答案<code>11</code>？</p>
+<p>我们用到两个栈<code>ns</code>和<code>os</code>，分别寄存操作数number和运算符operator。按顺序遍历表达式，遇到操作数压入<code>ns</code>，遇到运算符压入<code>os</code>。如果新遇到的运算符优先度比<code>os</code>栈顶优先度低，则弹出<code>os</code>栈顶运算符以及<code>ns</code>顶部两个数进行运算，结果压入<code>ns</code>，再将新运算符压入<code>os</code>。反复进行直至表达式遍历完成，之后依次弹出<code>os</code>栈顶与<code>ns</code>顶部两个数进行运算，结果压入<code>ns</code>，直到<code>os</code>为空，此时<code>ns</code>中只剩最终计算结果，将其弹出。</p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>队列是典型FIFO结构，实现先进先出的调度。同样的，队列可以使用数组和链表实现。</p>
+<h3 id="用数组实现队列"><a href="#用数组实现队列" class="headerlink" title="用数组实现队列"></a>用数组实现队列</h3><p>我们需要构造一个队列结构，有以下要素：</p>
+<ul>
+<li>size：队列长度</li>
+<li>front：队头序号</li>
+<li>rear：队尾序号</li>
+</ul>
+<p>同样，用数组实现队列的时候也要设计最大队列容量。</p>
+<ul>
+<li>初始化：新建数组<code>queue</code>，<code>size = 0</code>，<code>front = 1</code>，<code>rear = 0</code></li>
+<li>入队：<code>size += 1</code>，<code>queue[++rear] = new_element</code></li>
+<li>出队：<code>size -= 1</code>，<code>return queue[front++]</code></li>
+</ul>
+<p><code>size</code>的使用不是必须的，不过最好使用<code>size</code>显式判断队列何时为空，何时为满。</p>
+<p>队头/尾移动到数组尾端时可以让其回到开头，以循环数组的方式继续模拟队列。使用循环数组时对队列是否为空的检验很重要。</p>
+<h3 id="用链表实现队列"><a href="#用链表实现队列" class="headerlink" title="用链表实现队列"></a>用链表实现队列</h3><p>一下子变得简单了很多。无需提前确定最大队列容量，入队时向链表尾部加入新节点，出队时返回头节点的下一个节点值后将其释放，注意<strong>不是释放头节点！</strong></p>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>树可以说是运用最广泛与最重要的结构了。树描述数据间的层次关系，每个节点有且仅有一个父节点，但可以拥有任意数量子节点。</p>
+<p>几个属性：</p>
+<ul>
+<li>深度：从根节点开始到指定节点的路径长</li>
+<li>高度：从指定节点开始到达其子树中最远叶节点的路径长</li>
+</ul>
+<h2 id="描述一棵通常的树"><a href="#描述一棵通常的树" class="headerlink" title="描述一棵通常的树"></a>描述一棵通常的树</h2><p>很自然，我们可以定义树中每个节点，使用指针表示节点间的联系。但是有个问题：对于一棵通常的树而言，其子节点数量是不确定的，直接定义指向每个子节点的指针无法程序化进行。</p>
+<p>为解决该问题，我们使用<strong>第一个子节点指针</strong>和<strong>下一个兄弟节点指针</strong>进行节点间关系描述，这样既描述了节点和当前层级其他节点的关系又描述了和下一层级节点的关系。</p>
+<p>所以对一棵通常的树，对节点结构定义如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    ParamType param; <span class="comment">// Any parameter you want ...</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">firstChild</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">nextSibling</span>;</span></span><br><span class="line">&#125; Node;</span><br></pre></td></tr></table></figure></p>
+<p>这里是对一般树节点结构的定义，后面会看到，对于特殊的树（如二叉树），受到结构的要求，我们可以直接定义全部指向子节点的指针。</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2>
     </article>
     <!-- license  -->
     
@@ -429,7 +479,7 @@ height:50vh;
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">September 14th 2019, 9:57:52 am</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">September 14th 2019, 11:21:34 am</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">September 15th 2019, 5:32:51 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -558,7 +608,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#表、栈与队列"><span class="toc-number">1.</span> <span class="toc-text">表、栈与队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表"><span class="toc-number">1.1.</span> <span class="toc-text">表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于表头"><span class="toc-number">1.1.1.</span> <span class="toc-text">关于表头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入-删除操作需要注意的"><span class="toc-number">1.1.2.</span> <span class="toc-text">插入/删除操作需要注意的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他"><span class="toc-number">1.1.3.</span> <span class="toc-text">其他</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#表、栈与队列"><span class="toc-number">1.</span> <span class="toc-text">表、栈与队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#表"><span class="toc-number">1.1.</span> <span class="toc-text">表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于表头"><span class="toc-number">1.1.1.</span> <span class="toc-text">关于表头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入-删除操作需要注意的"><span class="toc-number">1.1.2.</span> <span class="toc-text">插入/删除操作需要注意的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">1.1.3.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更多样式的表"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">更多样式的表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#桶排序-amp-基数排序"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">桶排序&amp;基数排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈"><span class="toc-number">1.2.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用数组实现栈"><span class="toc-number">1.2.1.</span> <span class="toc-text">用数组实现栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用链表实现栈"><span class="toc-number">1.2.2.</span> <span class="toc-text">用链表实现栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个例子"><span class="toc-number">1.2.3.</span> <span class="toc-text">一个例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列"><span class="toc-number">1.3.</span> <span class="toc-text">队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用数组实现队列"><span class="toc-number">1.3.1.</span> <span class="toc-text">用数组实现队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用链表实现队列"><span class="toc-number">1.3.2.</span> <span class="toc-text">用链表实现队列</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">2.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述一棵通常的树"><span class="toc-number">2.1.</span> <span class="toc-text">描述一棵通常的树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">2.2.</span> <span class="toc-text">二叉树</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -571,6 +621,20 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1143,17 +1207,17 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
-        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
-    
         <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
         <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
