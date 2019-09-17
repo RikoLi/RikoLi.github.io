@@ -489,7 +489,7 @@ height:50vh;
 <p>常规删除进行树结构的改变，分多种情况讨论。</p>
 <p>当被删除节点为叶节点时一切都是美好的，只需要释放该节点的空间。当被删除节点只有一个孩子，事情也不是很复杂，我们让其唯一的孩子代替被删除节点，然后释放其空间即可，当然这里要注意做好节点地址备份，因为在用子节点替换之后，被删除节点的地址改变了。</p>
 <p>但是如果被删除节点有两个孩子就稍微麻烦一点。通常，我们使用被删除节点右子树中最小节点值替换被删除节点值（替换节点属性而不是向后的引用指针！），然后从被删除节点的右子树中递归地删除那个最小值节点。由于右子树中的最小节点一定是一个叶节点，因此在递归删除过程中很容易使用上文提到的方式对叶节点进行删除。因此，常规删除中应该同时包含所有情况的讨论以便在对双子树节点进行删除时能递归地进行。</p>
-<h3 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h3><p>现在让我们更进一步，二叉查找树实现了对数据的有效组织，通过递归的方法维护结构，但是它存在固有的问题————一个二叉查找树可能极度不平衡，某个节点的两棵子树高度可能相差甚远，在进行维护时的代价过高。</p>
+<h3 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h3><p>现在让我们更进一步，二叉查找树实现了对数据的有效组织，通过递归的方法维护结构，但是它存在固有的问题——一个二叉查找树可能极度不平衡，某个节点的两棵子树高度可能相差甚远，在进行维护时的代价过高。</p>
 <p>因此我们引入<strong>平衡</strong>的概念，使得任何节点的深度都不宜过深，加入平衡的二叉查找树称为平衡二叉树。实现平衡的方法很多，最传统的是通过<strong>旋转</strong>操作构建的AVL树。</p>
 <p>AVL树定义为任意节点两子树高度差不超过1的二叉查找树。插入操作会导致树结构发生改变并影响平衡性，因此AVL树要求在进行打破平衡的操作后对树进行维护，使其仍保持平衡条件。维护方式也是对树结构的一些调整，称<strong>旋转</strong>。</p>
 <h4 id="AVL树的旋转"><a href="#AVL树的旋转" class="headerlink" title="AVL树的旋转"></a>AVL树的旋转</h4><p>解决何时旋转，在哪里旋转，向什么方向旋转。</p>
@@ -524,7 +524,7 @@ height:50vh;
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">September 14th 2019, 9:57:52 am</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">September 17th 2019, 5:12:13 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/09/14/Data-Structure-Notes/">September 17th 2019, 5:17:04 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -666,20 +666,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1244,23 +1230,23 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
-        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
     
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
         <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
-        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
-    
         <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="支持向量机"><span class="iconfont-archer">&#xe606;</span>支持向量机</span>
     
@@ -1334,23 +1320,7 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
 </html>
 
 
