@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Riko Li">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Riko Li">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Computer Vision Notes · 逢田文明博物馆</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/new-favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Riko&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Computer Vision Notes</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Riko's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/new-post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Computer Vision Notes
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="CV">CV</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.4k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/09/25</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>计算机视觉学习笔记，参考资料：<em>Stanford, CS231A, Computer Vision: From 3D Resconstruction to Recognition</em><br><a id="more"></a></p>
+<h1 id="Camera-Models"><a href="#Camera-Models" class="headerlink" title="Camera Models"></a>Camera Models</h1><p>摄像机模型以小孔成像作为基础，描述了如何将真实世界（三维）内每个点经过投影变换映射到二维平面上对应点。映射关系可以视为一系列线性变换，完全使用矩阵代数描述。（这应该是最基础的知识了）</p>
+<p><img src="./projective_transformation.png" alt="projective_transformation"></p>
+<p>上图是传统pinhole camera模型，分成三个部分：</p>
+<ul>
+<li>投影平面坐标系$\Pi’$</li>
+<li>摄像机坐标系$O$</li>
+<li>真实世界坐标系$O_w$</li>
+</ul>
+<p>思考一下摄像机进行的工作，数学上来讲，就是将$O_w$下所有点映射到$\Pi’$下，即一个映射$E$满足：</p>
+<script type="math/tex; mode=display">
+E: \mathbb{R}^3 \rightarrow \mathbb{R}^2</script><h2 id="简单情况"><a href="#简单情况" class="headerlink" title="简单情况"></a>简单情况</h2><p>简单情况下，$O_w$与$O$坐标系相同，此时使用相似三角形可以进行坐标变换的对应关系推导，我们令$\mathbf{P}$为$O_w$内一点坐标，$\mathbf{P}’$为$\Pi’$内一点坐标，$f$为摄像机距离$\Pi’$的距离：</p>
+<script type="math/tex; mode=display">
+\mathbf{P} = \begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}, \space
+\mathbf{P}' = \begin{bmatrix}
+x' \\ y'
+\end{bmatrix} = \begin{bmatrix}
+f\frac{x}{z} \\ f\frac{y}{z}
+\end{bmatrix}</script><p>考虑到实际中我们使用量化的像素描述坐标（因子$k,l$，表示像素/单位距离），并且根据$\Pi’$原点位置的设定可能存在平移$c_x$与$c_y$，变换关系修正为：</p>
+<script type="math/tex; mode=display">
+\mathbf{P}' = \begin{bmatrix}
+x' \\ y'
+\end{bmatrix} = \begin{bmatrix}k f\frac{x}{z} + c_x \\ l f\frac{y}{z} + c_y
+\end{bmatrix} = \begin{bmatrix}\alpha\frac{x}{z} + c_x \\\beta\frac{y}{z} + c_y
+\end{bmatrix}</script><p>其中$\alpha$和$\beta$表示全部因子乘积。</p>
+<p>于是我们得到了$O$（即$O_w$）到$\Pi’$的变换方法。但是仔细一看，出现了$\frac{1}{z}$项，这说明现在的变换$(x,y,z)\rightarrow (x’,y’)$是非线性的！我们不喜欢非线性变换，所以得想个办法构造线性变换，从而可以使用矩阵代数描述变换。</p>
+<h3 id="Homogeneous-Coordinates-齐次坐标系"><a href="#Homogeneous-Coordinates-齐次坐标系" class="headerlink" title="Homogeneous Coordinates 齐次坐标系"></a>Homogeneous Coordinates 齐次坐标系</h3><p>齐次坐标系的引入使得变换能够以线性方式进行。它使用$N+1$维描述$N$维空间内一个点，具体为什么这样做这里不进行展开，自行查阅其他资料。</p>
+<p>我们将欧式坐标系记为$E$，齐次坐标系记为$H$，则变换关系为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&E \rightarrow H:\space (x,y,z) \rightarrow (x,y,z,1) \\
+&H \rightarrow E:\space (x,y,z,w) \rightarrow (\frac{x}{w}, \frac{y}{w}, \frac{z}{w})
+\end{aligned}</script><p>我们先对$O$坐标系下的点转入齐次坐标系$O_h$，然后发现我们可以用线性的方式表示齐次坐标系下的等价变换：</p>
+<script type="math/tex; mode=display">
+\mathbf{P}_h' = \begin{bmatrix}
+\alpha & 0 & c_x & 0 \\
+0 & \beta & c_y & 0 \\
+0 & 0 & 1 & 0
+\end{bmatrix} \begin{bmatrix}
+x \\ y \\ z \\ 1
+\end{bmatrix} = \begin{bmatrix}
+\alpha x + c_x z \\
+\beta y + c_y z \\
+z
+\end{bmatrix}</script><p>齐次坐标系下进行变换得到其次坐标系下点坐标，因此我们得到$\Pi_h’$坐标系下投影点的齐次坐标，将其变换回欧式空间，得到：</p>
+<script type="math/tex; mode=display">
+\mathbf{P}' = \begin{bmatrix}
+\frac{\alpha x + c_x z}{z} \\
+\frac{\beta y + c_y z}{z}
+\end{bmatrix} = \begin{bmatrix}
+\alpha \frac{x}{z} + c_x \\
+\beta \frac{y}{z} + c_y
+\end{bmatrix} = \begin{bmatrix}
+x' \\ y'
+\end{bmatrix}</script><p>这恰是欧式坐标系下投影平面$\Pi’$上的点$\mathbf{P}$投影坐标，而且我们用线性变换描述了投影变换的过程。</p>
+<p><strong>以后推导符号中不做显式说明，默认变换全部在齐次坐标系下进行。</strong></p>
+<p>最后我们做一些定义，定义Camera matrix $K$：</p>
+<script type="math/tex; mode=display">
+\mathbf{K} = \begin{bmatrix}
+\alpha & 0 & c_x \\
+0 & \beta & c_y \\
+0 & 0 & 1
+\end{bmatrix}</script><p>定义变换矩阵$M$：</p>
+<script type="math/tex; mode=display">
+\mathbf{M} = \mathbf{K} \begin{bmatrix}
+\mathbf{I} & \mathbf{0}
+\end{bmatrix} = \begin{bmatrix}
+\mathbf{K} & \mathbf{0}
+\end{bmatrix}</script><p>投影变换可记为：$\mathbf{P}’ = \mathbf{M}\mathbf{P}$。</p>
+<h2 id="But…"><a href="#But…" class="headerlink" title="But…"></a>But…</h2><p>注意了，我们之前的变换存在于一种简单情况下，即真实世界坐标系$O_w$与摄像机坐标系$O$相同，但是现实是，它们一般是不同的！我们完全可以使用一套独立坐标系$O_w$描述真实世界中的点。</p>
+<p>这样导致了一个问题：一共出现了三个坐标系，其中投影平面已经利用投影变换和摄像机系联系起来了，但是真实世界和摄像机还没有变换关系。</p>
+<p>我们需要一个线性变换将$O_w$系下坐标变换到$O$系下。这个变换对应空间内向量的旋转和平移，要求$\mathbb{R}^3 \rightarrow \mathbb{R}^3$。</p>
+<h3 id="旋转变换"><a href="#旋转变换" class="headerlink" title="旋转变换"></a>旋转变换</h3><p>旋转变换中三个轴有三个旋转角度，对应变换矩阵：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathbf{R} &= \mathbf{R}_x \mathbf{R}_y \mathbf{R}_z \\
+&= \begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos{\alpha} & -\sin{\alpha} \\
+0 & \sin{\alpha} & \cos{\alpha}
+\end{bmatrix} \begin{bmatrix}
+\cos{\beta} & 0 & \sin{\beta} \\
+0 & 1 & 0 \\
+-\sin{\beta} & 0 & \cos{\beta}
+\end{bmatrix} \begin{bmatrix}
+\cos{\gamma} & -\sin{\gamma} & 0 \\
+\sin{\gamma} & \cos{\gamma} & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\end{aligned}</script><p><del>有点复杂不是吗？</del></p>
+<h3 id="平移变换"><a href="#平移变换" class="headerlink" title="平移变换"></a>平移变换</h3><p>平移变换记为一个列向量：</p>
+<script type="math/tex; mode=display">
+\mathbf{T} = \begin{bmatrix}
+t_x \\ t_y \\ t_z
+\end{bmatrix}</script><p>现在我们把旋转、平移加入到齐次坐标系下的$O_w \rightarrow O$坐标系变换中，此时$(x,y,z,1)$为$O_w$系下齐次坐标：</p>
+<script type="math/tex; mode=display">
+\mathbf{P} = \begin{bmatrix}
+\mathbf{R} & \mathbf{T} \\
+\mathbf{0} & 1
+\end{bmatrix}_{4\times 4} \begin{bmatrix}
+x \\ y \\ z \\ 1
+\end{bmatrix}</script><p>再进行投影变换实现$\mathbf{P} \rightarrow \mathbf{P}’$：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathbf{P}' &= \mathbf{M}\mathbf{P} \\
+&= \mathbf{K} \begin{bmatrix}\mathbf{I} & \mathbf{0}\end{bmatrix} \begin{bmatrix}
+\mathbf{R} & \mathbf{T} \\
+\mathbf{0} & 1
+\end{bmatrix}_{4\times 4} \begin{bmatrix}
+x \\ y \\ z \\ 1
+\end{bmatrix} \\
+&= \mathbf{K} \begin{bmatrix}\mathbf{R} & \mathbf{T}\end{bmatrix}_{3\times 4} \begin{bmatrix}
+x \\ y \\ z \\ 1
+\end{bmatrix} \\
+&\triangleq \mathbf{M}_w \mathbf{P}_w
+\end{aligned}</script><p>以后我们仍然使用符号$\mathbf{M}$表示整个投影变换，此时其定义为：</p>
+<script type="math/tex; mode=display">
+\mathbf{M} = \mathbf{K} \begin{bmatrix}\mathbf{R} & \mathbf{T}\end{bmatrix}</script><h1 id="Camera-Calibration"><a href="#Camera-Calibration" class="headerlink" title="Camera Calibration"></a>Camera Calibration</h1><p>…</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
+            </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/09/25/Computer-Vision-Notes/">http://www.zjuriko.ml/2019/09/25/Computer-Vision-Notes/</a>
+            </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/09/25/Computer-Vision-Notes/">September 25th 2019, 8:32:17 pm</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/09/25/Computer-Vision-Notes/">September 26th 2019, 12:54:47 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/09/14/Data-Structure-Notes/" title="Data Structure Notes">
+                    <div class="prevTitle">Data Structure Notes</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:939958083@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/rikoli" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//space.bilibili.com/11618555" class="iconfont-archer bilibili" target="_blank" title="bilibili"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Camera-Models"><span class="toc-number">1.</span> <span class="toc-text">Camera Models</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单情况"><span class="toc-number">1.1.</span> <span class="toc-text">简单情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Homogeneous-Coordinates-齐次坐标系"><span class="toc-number">1.1.1.</span> <span class="toc-text">Homogeneous Coordinates 齐次坐标系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#But…"><span class="toc-number">1.2.</span> <span class="toc-text">But…</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转变换"><span class="toc-number">1.2.1.</span> <span class="toc-text">旋转变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#平移变换"><span class="toc-number">1.2.2.</span> <span class="toc-text">平移变换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Camera-Calibration"><span class="toc-number">2.</span> <span class="toc-text">Camera Calibration</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 30
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/Computer-Vision-Notes/">Computer Vision Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href="/2019/09/14/Data-Structure-Notes/">Data Structure Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href="/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">集成学习：AdaBoost, Bagging与Random Forest</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href="/2019/07/18/7-18/">7.18</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/2019-Summer-Vacation/">2019 Summer Vacation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/03</span><a class="archive-post-title" href="/2019/06/03/计算机网络期末复习/">计算机网络期末复习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/01</span><a class="archive-post-title" href="/2019/06/01/6-1之后要做的事/">6.1之后要做的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/26</span><a class="archive-post-title" href="/2019/05/26/2019.5.26的Icecream/">2019.5.26的Icecream</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/06</span><a class="archive-post-title" href="/2019/05/06/最近要做的事/">最近要做的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href="/2019/04/30/关于前后端通信的一些基础/">关于前后端通信的一些基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href="/2019/04/21/关于那些复杂公式的记忆方式/">关于那些复杂公式的记忆方式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2019/04/18/阅读笔记：Outline-Colorization-through-Tandem-Adversarial-Networks/">阅读笔记：Outline Colorization through Tandem Adversarial Networks</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href="/2019/04/12/恭喜mimori女士/">恭喜mimori女士</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href="/2019/03/31/枯了/">枯了</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href="/2019/03/26/GraphSAGE：Node Embedding初探&复现的一些想法/">GraphSAGE：Node Embedding初探&复现的一些想法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href="/2019/03/24/2019.3.23水水亚巡场记/">2019.3.23水水亚巡场记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href="/2019/03/19/一些回忆的事/">一些回忆的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span><a class="archive-post-title" href="/2019/03/09/AI整理/">AI整理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href="/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/">GAN demo: ACG-Style Faces Generating</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href="/2018/12/05/GAN笔记/">GAN笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href="/2018/10/19/基于Keras的人脸验证demo/">基于Keras的人脸验证demo</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span><a class="archive-post-title" href="/2018/10/14/关于矩阵几何意义的理解/">关于矩阵几何意义的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href="/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">机器学习笔记：支持向量机SVM基本原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span><a class="archive-post-title" href="/2018/08/11/Python-Tkinter库参考手册/">Python Tkinter库参考手册</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2018/08/07/几个有用的ACG图片网站/">几个有用的ACG图片网站</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2018/08/06/用Python-requests库实现的简单爬虫/">用Python requests库实现的简单爬虫</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href="/2018/08/04/Python正则表达式笔记/">Python正则表达式笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2018/08/03/机器学习笔记：L2正则化/">机器学习笔记：L2正则化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2018/08/03/关于Denmaku-Shooter/">关于Denmaku Shooter</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href="/2018/07/29/第一篇blog/">第一篇blog</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
+    
+        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
+    
+        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
+    
+        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
+    
+        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="支持向量机"><span class="iconfont-archer">&#xe606;</span>支持向量机</span>
+    
+        <span class="sidebar-tag-name" data-tags="互联网"><span class="iconfont-archer">&#xe606;</span>互联网</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Riko Li"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
+
+
