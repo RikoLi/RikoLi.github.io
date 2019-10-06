@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Riko Li">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Riko Li">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>2019上海BILIBILI World场记 · 逢田文明博物馆</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/new-favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Riko&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">2019上海BILIBILI World场记</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Riko's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/new-post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            2019上海BILIBILI World场记
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5.4k</span>阅读时长: <span class="post-count reading-time">18 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/10/05</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>记2019国庆假期参加BILIBILI World 2019 in Shanghai。<br>我永远喜欢スタァライト九九組.jpg</p>
+<p>P.S. 这次写的好长…<br><a id="more"></a></p>
+<h1 id="Prologue：3·7·5·1·0"><a href="#Prologue：3·7·5·1·0" class="headerlink" title="Prologue：3·7·5·1·0"></a>Prologue：3·7·5·1·0</h1><p>这次参加活动要从九月份说起。九月份放出BW购票消息时我还在河北省某山区（好像叫东山<del>奈央</del>）旅游，晚饭快吃完的时候买了张98R的普通票。放在平常我根本不会去这种鳗斩场合凑热闹，一是太累，二是去了也没啥有意思的，都是人从众，店店店，二刺螈浓度高到窒息，这次完全是看到Starlight九九组以团体名义作为嘉宾正式参演才去的，也就是说完全以看九九组现场表演为目的。有一点遗憾的是，三森すずこ女士因为出席其他活动的原因（后来听说是百老汇演出？）无法出席上海场，因此九九组只好变成了(八八组)[<a href="https://www.bilibili.com/video/av65244641]（笑）。" target="_blank" rel="noopener">https://www.bilibili.com/video/av65244641]（笑）。</a></p>
+<p><del>所以说还是没见成森森森啊！</del></p>
+<p>活动日期正好处于国庆假期中，考虑到交通情况，我和同行者ayi在9.8前后就提前预定了住宿和车票，车票好说，提前一个月左右的住宿其实已经不太好定了，最开始预定的旅店在预定后不久因为房源紧张给我们退房了（迷惑），还好之后又找到了其他店，确定下来了住处。</p>
+<p>之后便是漫长的等待，直到10.4。期间突然产生了一个想法，主要是参考了少女歌剧<a href="https://www.bilibili.com/video/av41242256" target="_blank" rel="noopener">台北某场见面会</a>的操作(没错就是想被锁喉那个)，如果BW场安排了talking section，那么我们也可以搞一搞玩玩。之后联系了ayi，两人一致同意，经多次协商将<del>迫害</del>对象确定为萌p女士，于是就有了下面这个非常生草的设计图：</p>
+<p><img alt="沙雕海报电子版" width="400px" src="./board.jpg"></p>
+<p>沙雕图从设计到印刷仅花费两天时间，印刷的时候已经是国庆假期，转天就要出发去上海，于是10.3跑到zjg去把这图打印成海报，我依稀还记得店员望向我不可思议的眼神，以及那句“你这个分辨率不够啊”，还有我的回答“我印着拿去玩的，不做宣传”，活生生一个铁憨憨。印出来一看确实沙雕效果极强，不过这也正是我们的目的：</p>
+<p><img alt="沙雕海报成品" width="800px" src="./poster.jpg"></p>
+<p><del>好厄啊</del></p>
+<p>于是我就拿了这东西在zjg待了一下午，晚上和popko等人一起吃了了顿晚饭就会yq准备启程了。</p>
+<h1 id="Transition：The-Show-Must-Go-on"><a href="#Transition：The-Show-Must-Go-on" class="headerlink" title="Transition：The Show Must Go on!"></a>Transition：The Show Must Go on!</h1><h2 id="1：Beginning-Symphony"><a href="#1：Beginning-Symphony" class="headerlink" title="#1：Beginning Symphony"></a>#1：Beginning Symphony</h2><p>10.4，星期五，我乘坐的高铁于9:41从杭州东站出发至上海虹桥。早起出门，杭州天气有些糟糕，大概就是北京前几年雾霾时候的样子，土黄色的天空外加低分辨率和对比度的远景。新桥门口叫了辆出租就去东站了。</p>
+<p>东站吃了顿金拱门，然后上车。说到高铁，这次一小时左右的高铁可能是我为数不多体验不怎么样的一次高铁乘坐经历，主要原因是从上车开始，车厢里就弥漫着一股浓烈的水产市场海鲜的味道…说难听点就是那种臭鱼烂虾堆在一起腐烂的味道…于是手机上和几个好友吐槽了一下，大家都怀疑是不是我嗅觉太敏感了，我甚至也一度怀疑是不是嗅觉出了什么问题，后来看到前排乘客也开始不断用手在鼻子前扇动不止，我确信这车厢绝对有什么不简单的东西…被折磨了大半程后，终于在某站之后味道消失了，真是可喜可贺，可喜可贺。另外，离开杭州后不久天气就转好了，多云但至少天空是蓝色的，大气透明度也还可以。</p>
+<p>10:40抵达上海虹桥站，<del>啊上海我叒来了</del>，ayi由于从武汉出发，所以得14:20前后才能到站，因此我一个人出站走到一街之隔的一栋plaza中找到个Starbucks休息，此时大约11:30左右。</p>
+<p>为了发挥杭州某三本学生特有的爱学习精神，<del>你信吗，反正我不信，我是被迫的</del>，休息期间连上lab把之前还差一点的环境搭好了，跑通了demo，然后就开始摸鱼（反正国庆假期结束了再好好学习）。期间我不得不吐槽Starbucks的WiFi认证，登录认证的短信15分钟之后才发到我手机上，此时我已经用别的方式上了网…</p>
+<p>13:00前后，跑到车站附近吃了个咖喱，然后进站等ayi。之前BSP的时候海豚烧鹅一行和ayi短暂见过一面，那时候我因为课业缘故没见成，这次终于有机会见面了。查了一下出站口就过去等着了，不久后终于会师，ayi果然是个壮汉，穿水水亚巡场T，背着包，和之前给我的感觉一样，之后两人简单问候一下，乘地铁直接前往第一站：纯K。</p>
+<p>我感觉我带的装备看起来真的很阿宅…</p>
+<p><img alt="看起来很阿宅的包" width="600px" src="./bag.jpg"></p>
+<h2 id="2：Dual-Live"><a href="#2：Dual-Live" class="headerlink" title="#2：Dual Live"></a>#2：Dual Live</h2><p>纯K似乎成为了每次阿宅出行的repertoire之一，这次当然不例外。和ayi一共唱了两个小时，曲目包括但不限于：</p>
+<ul>
+<li>BanG Dream！<ul>
+<li>Roselia大量曲目（然而能唱下来的可能也就BLACK SHOUT）</li>
+<li>Poppin’ Party大量曲目（我居然能跟着唱几首）</li>
+<li>Pastel Palette（修哇修哇那首，准确的说是那一句）</li>
+</ul>
+</li>
+<li>少女歌剧（纯K收录的全部，包括剧中revue song，欣喜的是这次去发现追加了恋の魔球一曲）</li>
+<li>Aqours<ul>
+<li>水水当然是水族馆啦（就一首，最后玩的）</li>
+</ul>
+</li>
+<li>生草合集<ul>
+<li>恶魔人</li>
+<li>新宝岛</li>
+<li>你比蔷薇更美（変わったあああああー）</li>
+<li>好像还有别的记不清了…总之很地狱</li>
+</ul>
+</li>
+</ul>
+<p>没想到唱了这么多邦邦歌曲，其实我听了大概才有一个礼拜左右的样子，而且基本是Roselia循环23333。</p>
+<h2 id="3：Suburb-Nocturne"><a href="#3：Suburb-Nocturne" class="headerlink" title="#3：Suburb Nocturne"></a>#3：Suburb Nocturne</h2><p>走出纯K已经五点半了，天色渐暗，二人又开始了地铁之旅。个人感觉支付宝乘车码吊打Metro大都会这玩意儿，后者扫描一次超麻烦，明明是扫码不知道为什么同时还用蓝牙通信。</p>
+<p>旅店在浦东荒地，没错，就是荒地，出地铁的时候已经将近19:00，黄金时间的街道上<del>总觉得十分安静呢</del>基本没人，除了偶尔往来几个外卖小哥电动车。有意思的是，出站口对着的写字楼是这个：</p>
+<p><img alt="某过气音游玩家们熟悉吗？" width="600px" src="./shengqu.jpg"></p>
+<p>check一下地图，好，旅店在2km开外，商量了一下，我们决定先走过去看看，反正时间还早得很。一番艰苦跋涉，走到旅店才发现原来旅店隔壁就是复旦大学张江校区，仅一路之隔。</p>
+<p><img alt="国内Top3的十几所高校之一" width="800px" src="./fudan.jpg"></p>
+<p>去前台check in，之后上楼，七拐八拐到了房间，原来在一个角落里，进门之后ayi惊叹没有窗户，后来仔细一看在墙角处开了一扇窗，外面是狭窄的平台直接连到楼外，看来是专门为了开窗打开的空隙。</p>
+<p><img alt="房间" width="800px" src="./hotel.jpg"></p>
+<p>简单收拾一下行李，休息片刻，我们出门找晚饭。骑车向地铁站方向返回，发现站旁其实有个plaza，于是就到里面逛了逛随便找了家店吃了晚饭。不得不说，这地方是真的偏，这么冷清的plaza还真是少见…21:00前后，我们上地铁进城，顺便研究了一下转天的路线，还好，距离会场地铁只需要两站地，不过中间需要一次换乘。</p>
+<p>2号线坐到陆家嘴，感叹不愧是陆家嘴，都这个点了依然人山人海，随便照了点东西（幼儿园拍摄水平），后来想想以前还真在晚上来过，别有一番滋味。</p>
+<p><img alt="陆家嘴" width="600px" src="./lujiazui.jpg"><br><img alt="东方明珠" width="600px" src="./dongfangzhizhu.jpg"></p>
+<p>跑到市区的原因是ayi提议过来找个地方打街机maimai!，于是又进了一家plaza。作为一个音游废物，我当然是选择在旁边看着啦（）</p>
+<p><img alt="某ayi先生装备" width="600px" src="./ayi.jpg"></p>
+<p>似乎刷新了他个人最好成绩（？）</p>
+<p>22:00之后plaza要关门了，坐地铁回到龙阳路站，然后鬼使神差地出了站，再惊喜地发现刚才似乎不应该出站换乘才对，这时候想回去已经没办法了，两人围着龙阳路枢纽绕了半圈，只好决定骑自行车旅店。看了下地图，9km，实际上还行，比zjg到yq远了那么一点，不过还是可以接受的。</p>
+<p>结果就是俩人骑着自行车夜游上海<del>荒地</del>，穿过各种“村子”，荒地（只有灌木的那种），一路沿着快速路和高架桥回到了住处，正好绕了一圈…ayi：“下次让我走我都不走这路”，太真实了。</p>
+<p>坐在屋子里已经是0点前后，聊了会儿天洗洗睡了。</p>
+<h1 id="Finale：Glittering-Stars-amp-Still-in-a-dream"><a href="#Finale：Glittering-Stars-amp-Still-in-a-dream" class="headerlink" title="Finale：Glittering Stars &amp; Still in a dream"></a>Finale：Glittering Stars &amp; Still in a dream</h1><h2 id="1：RE-VISIT"><a href="#1：RE-VISIT" class="headerlink" title="#1：RE:VISIT"></a>#1：RE:VISIT</h2><p>次日7:30，起床，头还是昏昏沉沉的，明显晚上没睡舒服，不过也管不了那么多，穿好衣服，ayi正好也醒了，收拾好东西，8:00的时候下楼退房，到旁边全家随便吃了个饭团，然后直接骑车去地铁站按照昨天确认的路线前往龙阳路2345号，上海新国际博览中心。我们的计划是直接就去主舞台等九九组出场，最好抢到前排位置，然后看一看下午的签售是什么情况，最后再自由逛展子。前一天和wf学长计划在会场碰个面，结果这天早上学长睡过了，也就作罢。（结果最后也没见到，呜呜呜呜）</p>
+<p>随着周围二刺螈浓度逐渐升高，突然觉得越来越不自在（x），果然鳗斩还是太那啥了点。走到门口的时候已经有不少人了，普通票入场时间是9:00，虽说我们在九点已经到了会场，但是奈何人实在是太多，从南边W1号馆入口进入，先走几百米到卸货区旁边一条东西向通道，然后向北行进到4号门才开始真正排队，感觉上500~600米的距离排了三折队伍，耗费了40分钟左右吧，然后才安检进场。</p>
+<p><img alt="入场队伍一瞥" width="800px" src="./entrance_queue.jpg"></p>
+<p>附地图一张：<br><img src="./niec.png" alt="场馆地图"></p>
+<p>直到进场我才回忆起来当时和sg一起去Wonder Festival in Shanghai的时候也是来的这个会场，不过当时是从东面的广场进来的，没有走这么久，这居然已经是两年前的事情了，如今sg已在枫叶国，祝他一切安好。</p>
+<h2 id="2：Main-Theme"><a href="#2：Main-Theme" class="headerlink" title="#2：Main Theme"></a>#2：Main Theme</h2><p>整个BW使用了N2~N5以及W5号馆，就占地面积而言还是挺大的，除W5馆没去，其他四个场馆全都走了一遍，进场的时候领到一本official guide<del>（为什么用了这个词，考试后遗症？）</del>，详细说明了各项子活动时间、地点以及出席嘉宾，此外就是参展商家信息。当然，我们对这些都没兴趣（x），九九组出场在11:20~12:15期间出席主舞台，我们走马观花般从入口走到N5找到主舞台，这时候已经10:30了，由于排队实在太长，之前计划的抢前排（前10排以内吧，期望值）作战大失败，不过后来随着主舞台前面人群走走散散，我们倒是慢慢挤进去了，虽然不是特别考前，但是至少不偏台，和后来表演开始的时候后排的长颈鹿们相比还算是捡了个大便宜。</p>
+<h3 id="2-：Episode-Coincidence"><a href="#2-：Episode-Coincidence" class="headerlink" title="#2+：Episode Coincidence"></a>#2<sup>+</sup>：Episode Coincidence</h3><p>万万没想到，万万没想到，我会在BW会场碰到171中学著名社团活动家暨围棋社创始人/社长zyj先生。z先生可能是看到了我的旅行动态（猜测），在我排队等待入场的时候发来一条消息，表示自己已经在会场中，问我怎么玩。没想到z先生从北京跑过来玩了，那当然要见一面。后来在主舞台前见了面，得知他居然搞的是VIP票，好狠，原来是过来看老番茄的。</p>
+<p>和z先生简单聊了两句遛了遛就分开了，重新找到ayi去等主舞台。附主舞台图：<del>哇，有我最喜欢的孔雀诶！</del><br><img src="./peacock.jpg" alt="太帅乐"></p>
+<h3 id="2-：Star-Divine"><a href="#2-：Star-Divine" class="headerlink" title="#2++：Star Divine"></a>#2<sup>++</sup>：Star Divine</h3><blockquote>
+<p>切っ先に栄光止まれ！——《Star Divine》</p>
+</blockquote>
+<p>前面丢个bilibili的链接：<a href="https://www.bilibili.com/video/av70155297" target="_blank" rel="noopener">点我康九九组！</a>写下这些的时候视频还存活着，不知道后续挂没挂，挂了的话up主会补档网盘。<del>这视频发的挺快的，返程时在虹桥吃晚饭的时候就梦回了（x）</del></p>
+<p>momoyo一行人上台的时候，台下这边已经堵得水泄不通，没想到今天到场的长颈鹿这么多。我原先的猜想是，上场首先跳1~2首歌，然后进入talking section，谈话时间会比较长，之后再来1~2两首歌就结束了，这样猜的原因是参考了上次水水的环节（水水那次完全都是talking），而且之前haruki发推提到来上海参加live，这样综合一下，感觉内容大概就这些了。</p>
+<p><strong>我猜错了！我猜错了！我猜错了！</strong><del>（突然兴奋的患者.jpg）</del></p>
+<p>事实证明我完全低估了。</p>
+<p>上场之后一段简短的问候，然后直接就开跳了，第一首曲子是动画OP《星のダイヤログ》，现场气氛超级棒，站在我们的位置向周围看去基本上看到的全是举起来的手和荧光棒，这让我深刻体会到身高的重要性，各种踮脚+插空向舞台看，果然观众都是真·长颈鹿。顺便一提，少女歌剧女粉比例其实挺高的，于是在现场就能看到各种被高大猛男挡住视线的妹子尽力寻找空隙看到舞台和屏幕的场景，真是辛苦女粉们了23333。</p>
+<p>接下来并没有我想象中的talking section，紧接着向后居然是连续六首曲子！真的是爽到，完全超出我的想象，突然感觉98R的门票看一场九九组七连简直赚翻了！</p>
+<p>按曲目顺序：</p>
+<ol>
+<li>星のダイヤログ</li>
+<li>舞台少女心得</li>
+<li>Circle of the Revue</li>
+<li>ディスカバリー！（跳马没看到呜呜呜，但是看到侧手翻！还有MV真就放长颈鹿进去啊2333）</li>
+<li>約束タワー</li>
+<li>Star Diamond（新曲！！Bushiroad亏了，中国长颈鹿赚了，真没想到跳这首曲子，当时现场听到しんきょく时全场欢呼）</li>
+<li>Star Divine（切っ先に栄光止まれ！长颈鹿合唱！）</li>
+</ol>
+<p>个人印象较深的部分：因为mimorin没来，所以歌曲中mimorin部分都由其他成员代唱，现场的时候没太注意，回来看回放的时候注意到了haruki和萌p的代唱部分；此外，现场版maho高音超级好听，尤其是约定之塔和声部分；个人介绍阶段萌p的“我是…香蕉”以及teru超大声（吓了我一跳2333）；ディスカバリー!的侧手翻和长颈鹿MV；Star Divine合唱<del>（以及唱到一半被扛起来打wota的老哥）</del>。顺便，九九组的中文水平还可以<del>，比水水好多了</del>。</p>
+<p><img alt="我是...香蕉" width="700px" src="./i_am_banana.jpg"></p>
+<p>就像之前<a href="https://www.bilibili.com/bangumi/play/ep278698" target="_blank" rel="noopener">采访momoyo那段视频</a>中momoyo所讲，她认为舞台的最大魅力即为“临场感”，的确临场感给人的冲击力非同寻常，这一点从亲身参与现场和观看现场转播的对比中能充分体会到。有机会多跑活动真的好啊，果然真正的舞台是演员+观众，我懂了.jpg</p>
+<p>有一说一，阿B麦克风是真的不行，一会儿收不到音一会儿又突然好了，把Star Divine最后一句给吞了，不过最后一句全场合唱了，倒是别有一番滋味，momoyo推里也提到了合唱：</p>
+<p><img src="./momoyo_twitter2.png" alt="Momoyo_twitter"></p>
+<p>让我这种菜鸡水平也能直接看懂的发言<del>（虽然可以说是非常客套了2333）</del>：</p>
+<blockquote>
+<p>“【BILIBILI WORLD上海】上海各位的闪耀（キラめき）非常耀眼！‘Star Divine’最后‘切っ先に栄光止まれ’大家的大合唱，很开心！下次一定9人再回到上海（笑），谢谢！”</p>
+</blockquote>
+<p>简而言之，让语言贫乏的我总结的话就是：爽，真爽，下次还看！</p>
+<h3 id="2-OST：Poster"><a href="#2-OST：Poster" class="headerlink" title="#2 OST：Poster"></a>#2 OST：Poster</h3><p>九九组上台的时候，我们成功升起了那个沙雕海报，从直播录屏来看我们成功标注了自己的位置（x），之后在萌p女士自我介绍的时候又举了一次，我估计可能看是看到了，不过距离有点远看不清上面的字，萌p好像还是近视来着（？）不过不管怎么样，找自己环节还是大成功。</p>
+<p>低清截图，来自之前的录屏视频：<br><img src="./myself.jpg" alt="迷惑行为大赏"></p>
+<h3 id="2-Endings"><a href="#2-Endings" class="headerlink" title="#2 Endings"></a>#2 Endings</h3><p>想到之前hinata在20岁生日提到的live tour的愿望，如今也正式实现了第一步：<br><img src="./hinata_birthday1.png" alt="晌生日发言1"><br><img src="./hinata_birthday2.png" alt="晌生日发言2"></p>
+<p>后来看推，似乎是跑到迪士尼玩去了，还发了段视频回来，这里就不放了（笑）。</p>
+<h2 id="3：Illusion"><a href="#3：Illusion" class="headerlink" title="#3：Illusion"></a>#3：Illusion</h2><p>12:30前后，九九组主舞台表演结束，我们稍事休息了一会儿，翻了一下指南，去了签售区继续蹲。到了这里是真的酸，看到抢到签售的长颈鹿们一个个排队，然后现场直签+对话，我开始郁闷当天为啥正好睡过了签售，以及最弱智的，阿B莫名其妙的签售消息公布流程，更何况签售价格简直便宜到家了。现场围满了没得到资格的长颈鹿，独酸酸不如众酸酸，不过签售间歇看到teru对场外的我们卖萌还是超有趣的。</p>
+<p><del>不过还是真的好酸，那么大一个色纸九人现场直签，噫呜呜噫</del></p>
+<p>虽然没搞到签售资格，但是比在主舞台靠她们更近了些（笑）。</p>
+<p>最爽的还是在后面，签售完了后，我和ayi小转一圈，回到了签售区侧面，不得不说这群人是真的懂，已经有一小批人在签售休息区出口等着了，我们一看这还不赶紧冲？趁着人少终于搞了次前排。等了大约十多分钟，终于等到九九组出来，彻底爽到，这回真是超级近，比接机距离甚至更近，近看发现她们果然好小只，超可爱！awsl！</p>
+<p>官方上传的休息室八人：<br><img src="./kukugumi_official.jpg" alt="合照"></p>
+<h3 id="3-：Episode-Ayasa"><a href="#3-：Episode-Ayasa" class="headerlink" title="#3+：Episode Ayasa"></a>#3<sup>+</sup>：Episode Ayasa</h3><p>之后的活动就是四处转转，哪里有兴趣看哪里。有意思的是找了半天邦邦的展台，发现它在一个角落里，不绕过去根本发现不了，赶到了发现正巧又碰上ayasa在邦邦这边的手渡会。这次又香了，直接挤到第二排，虽然不是手渡资格者，不过作为围观众人之一这位置简直太棒了。和整队的staff瞎侃一会儿，ayasa到了，人群开始骚动，这staff也很会玩，趁机带众人高呼“秋妈妈，秋妈妈”了两回，现场充满了愉快的空气。</p>
+<p><del>其实ayasa根本不胖，就是脸圆而已（）</del></p>
+<p><img src="./ayasa_official.jpg" alt="伊藤彩沙"></p>
+<p>ayasa和观众互动挺多的，一直在和大家挥手，手渡前后还一起合了影，不过感觉我方二人可能站的有点偏没被收录进去（x）</p>
+<p>后来一想，今天一共见了四次ayasa，从主舞台、签售外围、签售退场到邦邦手渡会，后两次还超级近，一本满足香爆了。啊对，后面买的挂牌又中了一个ayasa，那就是五次了（笑）。</p>
+<h2 id="4：Universe-Aria"><a href="#4：Universe-Aria" class="headerlink" title="#4：Universe Aria"></a>#4：Universe Aria</h2><p>ayasa的手渡会之后已经是15:00前后了（如果没记错），剩下的时间我们就简单逛了逛各种店，随便拍拍照。实际没买很多东西，扭了两次Roselia的扭蛋，出了lisa和sayo，从ayi那里用sayo换了个yukina，然后animate买了俩Poppin’ Party声优挂牌（aimi和ayasa）和俩少女歌剧全系列挂件（中的两个都是非圣翔的，噫呜呜噫，不过倒是同个学校的），感觉性价比最高的可能是到Kadokawa买了本SAO21，新章，原来想网购，这回直接就入手了，还送了个纪念色纸，花了30R。</p>
+<p>此外还在hololive的摊位前转了转，当天是有帕里签售的，不过当时蹲完九九组就去找邦邦了，所以错过了，同样错过的还有高丽菜那边的脱口秀。</p>
+<p>还有不得不提SAO搞得那个沙雕合味道广告，看得笑成弱智，欣赏一下片段：<br><img alt="SAO沙雕广告1" width="800px" src="./sao_advertise1.jpg"><br><img alt="SAO沙雕广告2" width="800px" src="./sao_advertise2.jpg"></p>
+<p><del>可是我从不吃海鲜味，</del>当天回到学校之后吃了个麻辣的顺便看了一下SAO3后半期的第一个总集篇（x）</p>
+<p>总的来说，这次让我感觉这个普通价的门票绝对回本了，海报优胜+3见九九组+4见ayasa，距离依次增近，真香.jpg</p>
+<p>然后，假期结束了，重回工作吧，希望以后有机会跑趟海外场看舞台剧/live~</p>
+<p>2019.10.6</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
+            </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/10/05/2019-National-Day/">http://www.zjuriko.ml/2019/10/05/2019-National-Day/</a>
+            </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/10/05/2019-National-Day/">October 5th 2019, 12:04:48 am</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/10/05/2019-National-Day/">October 6th 2019, 11:54:31 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/09/25/Computer-Vision-Notes/" title="Computer Vision Notes">
+                    <div class="prevTitle">Computer Vision Notes</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:939958083@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/rikoli" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="//space.bilibili.com/11618555" class="iconfont-archer bilibili" target="_blank" title="bilibili"></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Prologue：3·7·5·1·0"><span class="toc-number">1.</span> <span class="toc-text">Prologue：3·7·5·1·0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transition：The-Show-Must-Go-on"><span class="toc-number">2.</span> <span class="toc-text">Transition：The Show Must Go on!</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1：Beginning-Symphony"><span class="toc-number">2.1.</span> <span class="toc-text">#1：Beginning Symphony</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2：Dual-Live"><span class="toc-number">2.2.</span> <span class="toc-text">#2：Dual Live</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3：Suburb-Nocturne"><span class="toc-number">2.3.</span> <span class="toc-text">#3：Suburb Nocturne</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Finale：Glittering-Stars-amp-Still-in-a-dream"><span class="toc-number">3.</span> <span class="toc-text">Finale：Glittering Stars &amp; Still in a dream</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1：RE-VISIT"><span class="toc-number">3.1.</span> <span class="toc-text">#1：RE:VISIT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2：Main-Theme"><span class="toc-number">3.2.</span> <span class="toc-text">#2：Main Theme</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-：Episode-Coincidence"><span class="toc-number">3.2.1.</span> <span class="toc-text">#2+：Episode Coincidence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-：Star-Divine"><span class="toc-number">3.2.2.</span> <span class="toc-text">#2++：Star Divine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-OST：Poster"><span class="toc-number">3.2.3.</span> <span class="toc-text">#2 OST：Poster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Endings"><span class="toc-number">3.2.4.</span> <span class="toc-text">#2 Endings</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3：Illusion"><span class="toc-number">3.3.</span> <span class="toc-text">#3：Illusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-：Episode-Ayasa"><span class="toc-number">3.3.1.</span> <span class="toc-text">#3+：Episode Ayasa</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4：Universe-Aria"><span class="toc-number">3.4.</span> <span class="toc-text">#4：Universe Aria</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/05</span><a class="archive-post-title" href="/2019/10/05/2019-National-Day/">2019上海BILIBILI World场记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href="/2019/09/25/Computer-Vision-Notes/">Computer Vision Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/14</span><a class="archive-post-title" href="/2019/09/14/Data-Structure-Notes/">Data Structure Notes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href="/2019/08/13/集成学习：AdaBoost-Bagging与Random-Forest/">集成学习：AdaBoost, Bagging与Random Forest</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href="/2019/07/18/7-18/">7.18</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/2019-Summer-Vacation/">2019 Summer Vacation</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/03</span><a class="archive-post-title" href="/2019/06/03/计算机网络期末复习/">计算机网络期末复习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/01</span><a class="archive-post-title" href="/2019/06/01/6-1之后要做的事/">6.1之后要做的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/26</span><a class="archive-post-title" href="/2019/05/26/2019.5.26的Icecream/">2019.5.26的Icecream</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/06</span><a class="archive-post-title" href="/2019/05/06/最近要做的事/">最近要做的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href="/2019/04/30/关于前后端通信的一些基础/">关于前后端通信的一些基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href="/2019/04/21/关于那些复杂公式的记忆方式/">关于那些复杂公式的记忆方式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2019/04/18/阅读笔记：Outline-Colorization-through-Tandem-Adversarial-Networks/">阅读笔记：Outline Colorization through Tandem Adversarial Networks</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/12</span><a class="archive-post-title" href="/2019/04/12/恭喜mimori女士/">恭喜mimori女士</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/31</span><a class="archive-post-title" href="/2019/03/31/枯了/">枯了</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href="/2019/03/26/GraphSAGE：Node Embedding初探&复现的一些想法/">GraphSAGE：Node Embedding初探&复现的一些想法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href="/2019/03/24/2019.3.23水水亚巡场记/">2019.3.23水水亚巡场记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href="/2019/03/19/一些回忆的事/">一些回忆的事</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span><a class="archive-post-title" href="/2019/03/09/AI整理/">AI整理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href="/2018/12/08/GAN-demo-ACG-Style-Faces-Generating/">GAN demo: ACG-Style Faces Generating</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href="/2018/12/05/GAN笔记/">GAN笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href="/2018/10/19/基于Keras的人脸验证demo/">基于Keras的人脸验证demo</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span><a class="archive-post-title" href="/2018/10/14/关于矩阵几何意义的理解/">关于矩阵几何意义的理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span><a class="archive-post-title" href="/2018/09/10/机器学习笔记：支持向量机SVM基本原理/">机器学习笔记：支持向量机SVM基本原理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span><a class="archive-post-title" href="/2018/08/11/Python-Tkinter库参考手册/">Python Tkinter库参考手册</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2018/08/07/几个有用的ACG图片网站/">几个有用的ACG图片网站</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2018/08/06/用Python-requests库实现的简单爬虫/">用Python requests库实现的简单爬虫</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href="/2018/08/04/Python正则表达式笔记/">Python正则表达式笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2018/08/03/机器学习笔记：L2正则化/">机器学习笔记：L2正则化</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span><a class="archive-post-title" href="/2018/08/03/关于Denmaku-Shooter/">关于Denmaku Shooter</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span><a class="archive-post-title" href="/2018/07/29/第一篇blog/">第一篇blog</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
+    
+        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
+    
+        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
+        <span class="sidebar-tag-name" data-tags="WEB"><span class="iconfont-archer">&#xe606;</span>WEB</span>
+    
+        <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
+    
+        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
+    
+        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="支持向量机"><span class="iconfont-archer">&#xe606;</span>支持向量机</span>
+    
+        <span class="sidebar-tag-name" data-tags="互联网"><span class="iconfont-archer">&#xe606;</span>互联网</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Riko Li"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
+
+
