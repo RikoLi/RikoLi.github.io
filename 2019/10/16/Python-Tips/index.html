@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">278</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">665</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -410,7 +410,33 @@ height:50vh;
 <h1 id="lambda表达式的应用"><a href="#lambda表达式的应用" class="headerlink" title="lambda表达式的应用"></a>lambda表达式的应用</h1><p>lambda表达式只应该用来写非常简单的函数，作为表达式而非代码块！</p>
 <h2 id="对list按照指定元素排序"><a href="#对list按照指定元素排序" class="headerlink" title="对list按照指定元素排序"></a>对list按照指定元素排序</h2><p>使用内建函数<code>sorted()</code>对list进行排序，返回排序后的新list。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="string">'abc3'</span>, <span class="string">'def1'</span>, <span class="string">'ghi9'</span>, <span class="string">'jkl2'</span>, <span class="string">'mno5'</span>]</span><br><span class="line">sorted_lst = sorted(lst, key=<span class="keyword">lambda</span> x: x[<span class="number">-1</span>]) <span class="comment"># key决定排序使用的对象，与lambda表达式合用</span></span><br><span class="line">print(sorted_list) <span class="comment"># 输出['def1', 'jkl2', 'abc3', 'mno5', 'ghi9']</span></span><br></pre></td></tr></table></figure>
-<h2 id="to-be-continued…"><a href="#to-be-continued…" class="headerlink" title="to be continued…"></a>to be continued…</h2>
+<h1 id="argparse模块的基本用法"><a href="#argparse模块的基本用法" class="headerlink" title="argparse模块的基本用法"></a>argparse模块的基本用法</h1><p>使用<code>argparse</code>进行python命令行参数解析：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">parser = argparse.ArgumentParser() <span class="comment"># 新建parser对象</span></span><br><span class="line">parser.add_argument() <span class="comment"># 增加新的parse flag</span></span><br><span class="line">parser.print_help() <span class="comment"># 显示help menu</span></span><br><span class="line">args = parser.parse_args(sys.argv[<span class="number">1</span>:]) <span class="comment"># 忽略文件名，从第二个参数开始以list形式读入参数</span></span><br></pre></td></tr></table></figure>
+<h2 id="常用参数说明"><a href="#常用参数说明" class="headerlink" title="常用参数说明"></a>常用参数说明</h2><p>这里列出几个常用参数说明，更多查阅官方文档。</p>
+<ol>
+<li><code>argparse.ArgumentParser()</code><ul>
+<li>usage：显示在help menu中的用法，如下面的字符串：<br><code>python demo.py [-h] --input &lt;input_path&gt;</code></li>
+<li>description：字符串，程序的介绍</li>
+</ul>
+</li>
+<li><code>parser.add_argument()</code><ul>
+<li>第一个参数：flag字符串，如<code>&#39;--input&#39;</code></li>
+<li>type：字符串，flag对应参数的类型</li>
+<li>help：字符串，在help menu里显示的flag说明</li>
+<li>required：布尔值，是否为必要参数</li>
+<li>dest：字符串，进行解析后返回<code>args</code>对象中对应flag参数的属性名</li>
+</ul>
+</li>
+</ol>
+<h2 id="定位参数与可选参数"><a href="#定位参数与可选参数" class="headerlink" title="定位参数与可选参数"></a>定位参数与可选参数</h2><p>用<code>parser.add_argument()</code>创建新flag时，使用<code>&#39;-&#39;</code>或<code>&#39;--&#39;</code>开头对应可选参数，分别为短名称与场名称，实际没有输入可选参数时flag对应参数为<code>None</code>；不使用上述两种符号开头的flag为定位参数，按照输入顺序进行解析。</p>
+<p>比如<code>sum.py</code>有两个定位参数<code>x</code>和<code>y</code>，将两数相加，此外有一个可选参数<code>--save_to</code>决定将输出保存到某处。</p>
+<p>使用方式可以写成：<figure class="highlight python"><figcaption><span>sum.py [-h] x y [--save_to <save_path>]```</save_path></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">有可选参数时：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">python sum.py <span class="number">1</span> <span class="number">2</span> --save_to ./result/</span><br></pre></td></tr></table></figure></p>
+<p>命令行输出答案，并将输出保存到<code>./result/</code>。</p>
+<p>不加可选参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sum.py 1 2</span><br></pre></td></tr></table></figure>
+<p>只在命令行输出结果。</p>
+<p>…</p>
+
     </article>
     <!-- license  -->
     
@@ -418,7 +444,7 @@ height:50vh;
             <p>原文作者：<a href="http://www.zjuriko.ml">Riko Li</a>
             </p><p>原文链接：<a href="http://www.zjuriko.ml/2019/10/16/Python-Tips/">http://www.zjuriko.ml/2019/10/16/Python-Tips/</a>
             </p><p>发表日期：<a href="http://www.zjuriko.ml/2019/10/16/Python-Tips/">October 16th 2019, 11:04:19 pm</a>
-            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/10/16/Python-Tips/">October 17th 2019, 12:05:37 am</a>
+            </p><p>更新日期：<a href="http://www.zjuriko.ml/2019/10/16/Python-Tips/">November 11th 2019, 1:38:08 am</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -547,7 +573,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iterable对象相关"><span class="toc-number">1.</span> <span class="toc-text">iterable对象相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用列表表达式"><span class="toc-number">1.1.</span> <span class="toc-text">使用列表表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for遍历带序号"><span class="toc-number">1.2.</span> <span class="toc-text">for遍历带序号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式的应用"><span class="toc-number">2.</span> <span class="toc-text">lambda表达式的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对list按照指定元素排序"><span class="toc-number">2.1.</span> <span class="toc-text">对list按照指定元素排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#to-be-continued…"><span class="toc-number">2.2.</span> <span class="toc-text">to be continued…</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iterable对象相关"><span class="toc-number">1.</span> <span class="toc-text">iterable对象相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用列表表达式"><span class="toc-number">1.1.</span> <span class="toc-text">使用列表表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for遍历带序号"><span class="toc-number">1.2.</span> <span class="toc-text">for遍历带序号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式的应用"><span class="toc-number">2.</span> <span class="toc-text">lambda表达式的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对list按照指定元素排序"><span class="toc-number">2.1.</span> <span class="toc-text">对list按照指定元素排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#argparse模块的基本用法"><span class="toc-number">3.</span> <span class="toc-text">argparse模块的基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用参数说明"><span class="toc-number">3.1.</span> <span class="toc-text">常用参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定位参数与可选参数"><span class="toc-number">3.2.</span> <span class="toc-text">定位参数与可选参数</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -560,14 +586,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1140,7 +1158,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
-        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
+        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
         <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
@@ -1148,9 +1168,7 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
-        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
-    
-        <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
+        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
     
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
