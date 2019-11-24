@@ -349,10 +349,7 @@ height:50vh;
             <!-- 不可以删除，否则会调用post的layout  -->
 <main class="main about-page">
     <article class="article-entry">
-        <h2 id="关于Riko"><a href="#关于Riko" class="headerlink" title="关于Riko"></a>关于Riko</h2><h3 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h3><ul>
-<li>2016年毕业于北京第171中学</li>
-<li>2016-2020，浙江大学信息工程系</li>
-</ul>
+        <h2 id="关于Riko"><a href="#关于Riko" class="headerlink" title="关于Riko"></a>关于Riko</h2><p>一个有点奇怪但总体上还算正常的人。</p>
 <h3 id="Hobbies"><a href="#Hobbies" class="headerlink" title="Hobbies"></a>Hobbies</h3><ul>
 <li>ACG<ul>
 <li>Love Live！</li>
@@ -376,8 +373,13 @@ height:50vh;
 <p><img id="page-img" src></p>
 <script>
 let img = document.getElementById('page-img');
-let seed = Math.random()*4+0.5;
-img.src = './index/'+Math.round(seed)+'.png';
+let img_list = [
+    'https://s2.ax1x.com/2019/11/24/MOEcr9.png',
+    'https://s2.ax1x.com/2019/11/24/MOAzu9.jpg',
+    'https://s2.ax1x.com/2019/11/24/MOAO9U.jpg'
+]；
+let seed = Math.random() * (img_list.length - 1);
+img.src = img_list[Math.round(seed)];
 </script>
     </article>
 </main>
@@ -472,6 +474,8 @@ img.src = './index/'+Math.round(seed)+'.png';
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1060,19 +1064,19 @@ img.src = './index/'+Math.round(seed)+'.png';
     
         <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
-        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
+        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
+        <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
     
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
     
-        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
-        <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
+        <span class="sidebar-tag-name" data-tags="其他"><span class="iconfont-archer">&#xe606;</span>其他</span>
     
-        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
+        <span class="sidebar-tag-name" data-tags="矩阵"><span class="iconfont-archer">&#xe606;</span>矩阵</span>
     
         <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
     
