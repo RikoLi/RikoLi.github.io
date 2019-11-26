@@ -349,7 +349,9 @@ height:50vh;
             <!-- 不可以删除，否则会调用post的layout  -->
 <main class="main about-page">
     <article class="article-entry">
-        <h2 id="关于Riko"><a href="#关于Riko" class="headerlink" title="关于Riko"></a>关于Riko</h2><p>一个有点奇怪但总体上还算正常的人。</p>
+        <p id="date"></p>
+
+<h2 id="关于Riko"><a href="#关于Riko" class="headerlink" title="关于Riko"></a>关于Riko</h2><p>一个有点奇怪但总体上还算正常的人。</p>
 <h3 id="Hobbies"><a href="#Hobbies" class="headerlink" title="Hobbies"></a>Hobbies</h3><ul>
 <li>ACG<ul>
 <li>Love Live！</li>
@@ -372,6 +374,10 @@ height:50vh;
 </blockquote>
 <p><img id="page-img" src></p>
 <script>
+let date_ele = document.getElementById('date');
+let date = new Date();
+let zh = ['一', '二', '三', '四', '五', '六', '日'];
+date_ele.innerHTML = '今天是' + date.getFullYear() + '年' + date.getMonth() + '月' + date.getDate() + '日，星期' + zh[date.getDay()-1] + '哦~'
 let img = document.getElementById('page-img');
 let img_list = [
     'https://s2.ax1x.com/2019/11/24/MOEcr9.png',
@@ -474,14 +480,6 @@ img.src = img_list[Math.round(seed)];
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1076,9 +1074,9 @@ img.src = img_list[Math.round(seed)];
     
         <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
