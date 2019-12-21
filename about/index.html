@@ -376,8 +376,8 @@ height:50vh;
 <script>
 let date_ele = document.getElementById('date');
 let date = new Date();
-let zh = ['一', '二', '三', '四', '五', '六', '日'];
-date_ele.innerHTML = '今天是' + date.getFullYear() + '年' + date.getMonth()+1 + '月' + date.getDate() + '日，星期' + zh[date.getDay()-1] + '哦~'
+let zh = ['日', '一', '二', '三', '四', '五', '六'];
+date_ele.innerHTML = '今天是' + date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日，星期' + zh[date.getDay()] + '哦~'
 let img = document.getElementById('page-img');
 let img_list = [
     'https://s2.ax1x.com/2019/11/24/MOEcr9.png',
@@ -480,8 +480,6 @@ img.src = img_list[Math.round(seed)];
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
     
     
     
@@ -1064,11 +1062,11 @@ img.src = img_list[Math.round(seed)];
     
         <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
         <span class="sidebar-tag-name" data-tags="深度学习"><span class="iconfont-archer">&#xe606;</span>深度学习</span>
     
         <span class="sidebar-tag-name" data-tags="GAN"><span class="iconfont-archer">&#xe606;</span>GAN</span>
+    
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
     
@@ -1080,9 +1078,9 @@ img.src = img_list[Math.round(seed)];
     
         <span class="sidebar-tag-name" data-tags="人工智能"><span class="iconfont-archer">&#xe606;</span>人工智能</span>
     
-        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
-    
         <span class="sidebar-tag-name" data-tags="支持向量机"><span class="iconfont-archer">&#xe606;</span>支持向量机</span>
+    
+        <span class="sidebar-tag-name" data-tags="CV"><span class="iconfont-archer">&#xe606;</span>CV</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
