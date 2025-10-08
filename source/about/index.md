@@ -7,10 +7,25 @@ date: 2021-11-10 01:50:19
 
 > 「みんなをスタァライト、しちゃいます！」 by 愛城 華恋
 
-现居杭州。浙江大学信息与电子工程学院博士在读，研究方向为视觉无监督重识别技术。
+2016年开始挂壁杭州，待出狱中。老和山技校信电楠。
 
-重度（自认）ACG爱好者~~二刺猿~~，喜爱[LoveLive!系列](https://zh.moegirl.org.cn/LoveLive!)、[BanGDream!系列](https://zh.moegirl.org.cn/BanG_Dream!)以及[少女歌剧Revue Starlight系列](https://zh.moegirl.org.cn/%E5%B0%91%E5%A5%B3%E6%AD%8C%E5%89%A7_Revue_Starlight)等ACG音乐多媒体作品。
+**喜欢干啥：**
 
-会画一点画，热爱在KTV唱anisong，愿望是学会电吉他。
+~~沙卵二刺螈，~~音乐相关二偶这块不赖👍🏻
 
-欢迎来玉泉找我玩w
+- [Love Live!](https://zh.moegirl.org.cn/LoveLive!)
+- [BanG Dream!](https://zh.moegirl.org.cn/BanG_Dream!)
+- [Revue Starlight](https://zh.moegirl.org.cn/%E5%B0%91%E5%A5%B3%E6%AD%8C%E5%89%A7_Revue_Starlight)
+
+此外：
+
+- [東方Project](https://zh.moegirl.org.cn/%E4%B8%9C%E6%96%B9Project) - 浅尝，不够老资历
+
+**还有什么想说的：**
+
+- 我要毕业，，，
+- 会画一点画（但是很久没动过笔了，感觉又不会了）
+- AniSong KTV（✌🏻🐯这一块）
+- 愿望是学会电吉他啊啊啊
+
+欢迎来玉泉找我玩。
