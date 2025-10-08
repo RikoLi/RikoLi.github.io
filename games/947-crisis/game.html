@@ -20,23 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"rikoli.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="947危机                     玩家生命: 100         分数: 0         炸弹: 3                                              游戏结束!             你的得分: 0             重新开始">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Rikoの老和山大冒险">
-<meta property="og:url" content="https://rikoli.github.io/archives/2021/11/index.html">
+<meta property="og:url" content="https://rikoli.github.io/games/947-crisis/game.html">
 <meta property="og:site_name" content="Rikoの老和山大冒险">
+<meta property="og:description" content="947危机                     玩家生命: 100         分数: 0         炸弹: 3                                              游戏结束!             你的得分: 0             重新开始">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-08T10:20:30.724Z">
+<meta property="article:modified_time" content="2025-10-08T10:20:30.724Z">
 <meta property="article:author" content="Riko">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://rikoli.github.io/archives/2021/11/">
+<link rel="canonical" href="https://rikoli.github.io/games/947-crisis/game">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2021/11/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://rikoli.github.io/games/947-crisis/game.html","path":"games/947-crisis/game.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Rikoの老和山大冒险</title>
+<title> | Rikoの老和山大冒险
+</title>
   
 
 
@@ -102,7 +107,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -115,6 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#game-over"><span class="nav-number">1.</span> <span class="nav-text">游戏结束!</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,49 +194,86 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner page posts-expand">
+  
+  
 
 
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
-      </div>
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/games/">GAMES</a></li>
+            <li><a href="/games/947-crisis/">947-CRISIS</a></li>
+            <li>GAME</li>
+          
+  </ul>
+</div>
+
+</header>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-10T00:57:02+08:00"
-              content="2021-11-10">
-          11-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/10/Neo-Aspect/" itemprop="url">
-            <span itemprop="name">Neo-Aspect</span>
-          </a>
-      </div>
-
       
-    </header>
-  </article>
-
-
+      <div class="post-body">
+          <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>947危机</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="hud">
+        <div class="hud-item">玩家生命: <span id="player-health">100</span></div>
+        <div class="hud-item">分数: <span id="score">0</span></div>
+        <div class="hud-item">炸弹: <span id="bombs">3</span></div>
     </div>
-  </div>
-  
-  
-  
+    
+    <div id="game-container">
+        <div id="player"></div>
+        <div id="game-over">
+            <h2>游戏结束!</h2>
+            <p>你的得分: <span id="final-score">0</span></p>
+            <button id="restart-btn">重新开始</button>
+        </div>
+    </div>
+    
+    <div id="controls">
+        <p>控制: 
+            <span class="control-key">W</span>上 
+            <span class="control-key">S</span>下 
+            <span class="control-key">A</span>左 
+            <span class="control-key">D</span>右 
+            <span class="control-key">J</span>发射 
+            <span class="control-key">K</span>炸弹
+        </p>
+    </div>
+    <script src="./js/game.js"></script>
+</body>
+</html>
+    
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/games/">GAMES</a></li>
+            <li><a href="/games/947-crisis/">947-CRISIS</a></li>
+            <li>GAME</li>
+          
+  </ul>
+
+    
+    
+
 
 </div>
   </main>
